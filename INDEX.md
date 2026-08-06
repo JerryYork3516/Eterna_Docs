@@ -1,7 +1,7 @@
-# Eterna · 文档索引 · v4
+# Eterna · 文档索引 · v5
 
 > Eterna 正式文档与知识体系的唯一权威入口。
-> 当前已有四份上位文档完成版本冻结；Studio Next 节点 1 状态为 `PARTIALLY_FROZEN`。
+> 当前已有四份上位文档完成核对并组成可引用的冻结输入集合；冻结内容 Commit 为 `392e76e45b7d733ff3ba3e0f2a633b653f3fbacf`。
 
 ---
 
@@ -12,7 +12,7 @@
 - [术语表](GLOSSARY.md)
 - [文档变更记录](CHANGELOG.md)
 - [仓库协作规则](AGENTS.md)
-- [上位文档冻结基线 v0.1](00_Eterna/上位文档冻结基线_v0.1.md)
+- [上位文档冻结基线 v0.1](00_Eterna/上位文档冻结基线_v0.1.md)（FROZEN）
 
 ### 分类索引
 
