@@ -1,4 +1,4 @@
-# Eterna · 文档索引 · v2
+# Eterna · 文档索引 · v3
 
 > Eterna 正式文档与知识体系的唯一权威入口。
 > 当前已收录 Eterna 根定义、数字居民定义、Studio 产品方向与扩展生态创作材料。
@@ -33,7 +33,7 @@
 - [Eterna 核心宪章 v0.6](00_Eterna/Eterna_v0.6.txt)（内部批准候选版）
 - [Eterna Universe v0.3](00_Eterna/Eterna%20Universe_v0.3.txt)（内部批准候选版）
 - [数字居民定义 v0.6](01_核心领域/数字居民定义_v0.6.txt)（内部批准版）
-- [Eterna Studio North Star v0.2](02_平台产品/Studio/Studio%20North%20Star%20v0.2.txt)（内部批准候选版）
+- [Eterna Studio North Star v3.0](02_平台产品/Studio/Studio%20North%20Star%20v3.0.txt)（内部批准候选版）
 
 ### 扩展生态创作材料
 

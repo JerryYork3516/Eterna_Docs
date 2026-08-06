@@ -1,0 +1,1303 @@
+Eterna Studio North Star
+
+内部版本：v3.0
+文档性质：Eterna Studio 长期产品北极星与 Eterna Universe 创作基础平台定义
+状态：内部批准候选版
+
+一、文档地位
+
+本文件在《Eterna 核心宪章》《数字居民定义》和《Eterna Universe》约束下，定义 Eterna Studio 的长期目标、宇宙级职责、产品边界、平台能力、核心用户、扩展方式和阶段性建设原则。
+
+本文件是 Studio 的产品级最高方向文件。
+
+本文件回答：
+
+1. Studio 为什么存在；
+2. Studio 长期最终要成为什么；
+3. Studio 如何为整个 Eterna Universe 奠定创作与发布基础；
+4. Studio 负责统一哪些领域对象、编辑器、构建与发布能力；
+5. Studio 如何支持数字居民、模板、能力、资产和跨平台投影；
+6. Studio 与 Genesis、Aftelle、Runtime Core、居民实例数据权威源、Eterna Meta、Exchange 及其他领域平台如何分工；
+7. Studio Next 1.0 当前必须稳定什么；
+8. 哪些长期原则不得因短期实现、商业压力或技术变化而被破坏。
+
+本文件不规定具体数据库、代码类名、目录结构、接口字段、JSON Schema、算法、第三方供应商、收费套餐和施工步骤。
+
+具体产品范围、目标架构、领域模型、接口契约、实施计划、迁移方案和验收门禁，由下位规格定义。
+
+本文件中的长期目标不等于当前版本功能承诺，也不表示 Eterna Universe 中所有领域平台都由 Studio 一次建设完成。
+
+二、核心结论
+
+Eterna Studio 的长期目标不是成为一个更大的居民编辑器。
+
+Eterna Studio 的长期目标是：
+
+成为 Eterna Universe 面向数字居民的统一创作、定义、构建、验证、发布和扩展基础平台。
+
+Studio 应当为整个 Eterna Universe 提供稳定的创作地基，使数字居民、模板、能力、资产、编辑器、运行投影和发布物能够：
+
+被创建；
+被组合；
+被验证；
+被构建；
+被版本化；
+被授权；
+被发布；
+被迁移；
+被不同 Runtime 承载；
+被不同领域平台安全使用；
+在长期演进中保持身份、来源和兼容性。
+
+Studio 是 Eterna Universe 的“创作与编译基础层”。
+
+数字居民是中心主体。
+
+Studio 不是中心主体，也不得成为居民所有权、长期实例数据或身份治理的总控制者。
+
+三、Studio 为什么存在
+
+高级人工智能正在快速演进，但普通人仍难以真正创造、拥有和长期培养自己的数字智能主体。
+
+现有 AI 产品大多围绕单次会话、单个模型、短期 Agent、提示词、工作流、一次性虚拟角色以及平台锁定的数据和能力进行设计。
+
+这些工具可以完成任务，但不能稳定定义一个跨模型、跨设备、跨运行周期和跨平台持续存在的数字居民。
+
+Eterna Studio 存在的目的，是把模型、Agent、知识、记忆规则、人格、外观、声音、能力、权限、来源、版本和运行要求，组织成普通用户能够理解、专业设计师能够控制、开发者能够扩展、Runtime 能够执行、其他 Eterna 平台能够使用、用户能够长期拥有和迁移的数字居民定义与标准产物。
+
+Studio 的使命是：
+
+让普通用户像创建游戏角色一样，低门槛创建自己的数字居民；
+
+让居民设计师能够设计、测试、维护和发布高质量 Resident 与 Template；
+
+让开发者能够持续提供 Asset、Module、Capability、Adapter、Editor 和 Compiler Extension；
+
+让数字居民的身份、人格、规则、能力声明、来源、版本和兼容要求能够长期保存与演进；
+
+让 Eterna Universe 中不同领域平台不必重复发明居民定义、资产格式、能力接入和发布体系；
+
+让数字居民能够以同一个持续身份进入 Aftelle、Edu、Social、Work、World、Art、Sound、Cinema、Games、Life 及未来领域。
+
+四、Studio 在 Eterna Universe 中的位置
+
+Eterna Universe 的中心主体是 Digital Resident。
+
+Studio 是“创造与发布”领域平台。
+
+Studio 的正式定位是：
+
+数字居民蓝图、模板、能力、相关资产、运行投影与扩展内容的创作、配置、验证、构建和发布平台。
+
+Studio 为 Universe 提供创作基础，但不取代其他平台。
+
+Studio 与核心系统的关系：
+
+Studio：
+定义、编辑、验证、构建和发布 ResidentBlueprint、Template、Asset、Module、Capability、Adapter 和相关 Artifact。
+
+Genesis：
+执行 Template 实例化、派生、合并、拆分及其他新 Resident 产生流程。
+
+Aftelle：
+承载 Resident，提供交互、陪伴、恢复、备份入口和个人运行体验。
+
+Runtime Core：
+执行居民逻辑、权限、任务、状态更新和能力调用。
+
+Resident Instance Data Authority：
+维护长期记忆、关系历史、成长记录和持续状态的唯一受治理事实源职责。
+
+Eterna Meta：
+治理 resident_id、真实来源、lineage、授权、控制权历史和跨平台身份。
+
+Eterna Exchange：
+负责 TemplateRelease、Asset、Capability、作品、许可证和合法控制权转移流程的流通与记录。
+
+其他领域平台：
+为 Resident 提供学习、社交、工作、世界、文化、游戏和具身活动环境。
+
+Studio 可以为其他领域平台创建标准资产、定义和投影，但不得吞并其完整业务。
+
+例如：
+
+Studio Appearance Builder 不等于 Eterna Art；
+
+Studio Voice & Expression Builder 不等于 Eterna Sound；
+
+Studio 中的 Actor Projection 配置不等于 Eterna Cinema；
+
+Studio 中的 Game Role Projection 配置不等于 Eterna Games；
+
+Studio 中的场景与环境配置不等于 Eterna World。
+
+Studio 制作 Resident 可以使用的定义与产物。
+
+领域平台负责完整的活动、生产、关系和世界运行。
+
+五、Studio 为 Universe 奠定的基础
+
+Studio 长期必须稳定六类基础能力。
+
+第一类：统一领域对象
+
+Studio 必须稳定并长期维护：
+
+Project；
+Resident；
+ResidentBlueprint；
+BlueprintRevision；
+Template；
+TemplateRelease；
+EditorDocument；
+Asset；
+Module；
+Capability；
+Adapter；
+Build；
+Artifact；
+ResidentRelease；
+BuildProfile；
+RuntimeProfile；
+Projection；
+ValidationResult；
+MigrationRule；
+Provenance；
+License；
+Entitlement；
+Dependency；
+Compatibility Record。
+
+这些对象必须具有清晰边界，不得被一个巨型 Project JSON、节点结构或数据库表混合替代。
+
+第二类：统一编辑器平台
+
+Studio 必须允许不同专业构建器在同一个 Project、身份、资产、版本、命令、构建和发布体系下工作。
+
+第三类：统一构建与发布体系
+
+不同编辑器产生的内容必须进入标准 Build、Artifact 和 Release 链路。
+
+第四类：统一 Runtime 投影
+
+Studio 的复杂创作定义必须能够编译为面向不同 Runtime、设备和领域平台的确定性投影。
+
+第五类：统一来源、许可证与治理信息
+
+所有居民定义、模板、资产、模块、能力、模型和第三方依赖必须具备可验证来源与授权边界。
+
+第六类：统一扩展机制
+
+未来模型、Agent、协议、设备、编辑器和 Eterna 领域平台必须通过稳定契约接入，而不是反复侵入和推翻 Studio Core。
+
+六、Studio 的长期产品形态
+
+Studio 长期应形成六个相互协作的产品表面。
+
+1. Resident Assembly
+
+数字居民组装与整体设计。
+
+负责十三层结构、模块组合、资产引用、能力声明、权限边界、依赖关系、整体验证和居民发布。
+
+2. Specialized Builders
+
+数字居民专属构建器。
+
+负责外观、声音、表达、行为、认知策略、能力、动画和其他专门内容的创作。
+
+3. Cognition & Continuity Configuration
+
+长期认知、记忆、关系、成长与连续性策略配置。
+
+负责 ECCS 等长期认知系统的定义接入、策略配置、能力声明、权限与 Runtime Projection。
+
+4. Validation & Observability
+
+验证、测试、评测、诊断与可观察性。
+
+负责检查定义、来源、权限、兼容、Runtime 投影和发布质量，但不成为 Runtime 状态所有者。
+
+5. Build, Artifact & Release
+
+构建、不可变产物、版本、发布、迁移和回滚。
+
+6. Ecosystem Development
+
+面向设计师和开发者的 SDK、编辑器扩展、Capability、Adapter、Compiler Extension 和模板资产生态。
+
+这六个产品表面共享同一个 Studio Core，不得各自形成互不兼容的项目、资产和发布体系。
+
+七、Resident Assembly Editor
+
+Studio 的主编辑器正式定位为：
+
+Resident Assembly Editor
+数字居民组装编辑器
+
+它负责 Resident 的整体定义，不负责所有专业内容的内部制作。
+
+主要职责：
+
+创建和编辑 ResidentBlueprint；
+
+组织数字居民十三层结构；
+
+配置 Module；
+
+绑定 Asset 和 Capability；
+
+声明 Adapter、Runtime 和资源要求；
+
+管理来源、许可证、版本、依赖和兼容范围；
+
+查看专业构建器产生的标准产物；
+
+执行整体静态验证；
+
+发起隔离预览；
+
+比较 BlueprintRevision；
+
+选择 BuildProfile 和 RuntimeProfile；
+
+发起 Build；
+
+创建 candidate ResidentRelease 或 TemplateRelease；
+
+查看构建、发布、迁移和兼容诊断。
+
+主编辑器不负责：
+
+模型权重训练；
+
+通用 Mesh 建模；
+
+通用音频制作；
+
+完整 Agent IDE；
+
+完整影视和游戏内容生产；
+
+正式长期记忆编辑；
+
+居民实时状态维护；
+
+resident_id 发行；
+
+控制权转移；
+
+市场交易与结算。
+
+节点、插槽、面板和连线只是编辑方式。
+
+正式领域对象和引用关系必须能够脱离具体 UI 被保存、验证、迁移和编译。
+
+八、正式十三层结构
+
+Studio 必须按照《数字居民定义》使用以下十三层顺序：
+
+Layer 1：身份核心
+
+Layer 2：人格
+
+Layer 3：安全边界
+
+Layer 4：法律与授权
+
+Layer 5：记忆
+
+Layer 6：知识
+
+Layer 7：世界与环境
+
+Layer 8：行为方式
+
+Layer 9：能力与工具
+
+Layer 10：多模态表现
+
+Layer 11：关系
+
+Layer 12：元认知与成长
+
+Layer 13：居民状态模型
+
+Studio 保存的是居民定义、规则、结构、初始配置和能力声明。
+
+Studio 不把以下内容保存为居民定义事实：
+
+正式长期记忆；
+
+完整关系历史；
+
+当前关系阶段；
+
+当前情绪和成长进度；
+
+实际运行权限 Grant；
+
+API Key、OAuth Token 和 Provider 密钥；
+
+设备安全凭证；
+
+运行会话和任务中间状态。
+
+正式长期实例数据属于 ResidentInstanceData，由居民实例数据权威源维护。
+
+Runtime Core 根据 Studio 发布的规则读取和更新这些数据。
+
+九、Appearance Builder
+
+Appearance Builder
+外观构建器
+
+是 Studio 面向数字居民外观身份与 Layer 10 表现资产的正式专用构建器。
+
+长期职责：
+
+创建和编辑 Resident 专属外观；
+
+定义头部、面部、体型、发型、配饰和可扩展身体特征；
+
+建立 Visual Identity Anchor；
+
+生成可版本化的外观 Asset；
+
+生成粒子、Mesh、骨骼、材质和其他表现载体需要的标准锚点；
+
+生成 Layer 10 外观投影；
+
+支持预设、参数编辑、撤销、重做、保存、加载、比较和发布；
+
+保证同一外观在不同 Runtime 与表现技术中的身份一致性；
+
+支持未来高精度外观、身体、服装和具身资产扩展。
+
+Appearance Builder 不等于：
+
+通用三维建模软件；
+
+Eterna Art；
+
+Runtime 渲染器；
+
+Aftelle 表现系统；
+
+机器人身体控制系统。
+
+Studio 负责创作与发布外观定义和标准资产。
+
+Aftelle 与其他 Runtime 负责加载和动态表现。
+
+Runtime Core 不负责捏脸和外观创作。
+
+Eterna Art 负责完整视觉艺术与设计活动。
+
+Next 1.0 必须建设数字居民专用的 Appearance Builder v0.1，但不要求达到通用 DCC、MetaHuman 或大型游戏角色制作软件的全部能力。
+
+十、Voice & Expression Builder
+
+Voice & Expression Builder
+音色与表达构建器
+
+是 Studio 面向数字居民声音身份、语言表现和语音运行配置的正式专用构建器。
+
+长期职责：
+
+定义 Resident 的声音身份；
+
+配置音色特征、音域、语速、节奏、停顿和发音风格；
+
+配置情绪表达和语言风格；
+
+管理多语言与方言能力；
+
+管理声音来源、真人授权与许可证；
+
+形成 Provider-neutral 的 VoiceProfile；
+
+声明实时语音、TTS、STS、降级与设备要求；
+
+生成 Layer 10 声音与表达投影；
+
+支持预览、比较、版本、构建和发布；
+
+允许同一声音身份映射到不同 Provider、模型和设备实现。
+
+该构建器不应被称为“完整表现构建器”。
+
+多模态表现还包括外观、动作、表情、粒子、空间形态和硬件载体，不能全部由声音编辑器承担。
+
+Voice & Expression Builder 不等于：
+
+通用音乐制作工作站；
+
+完整声音模型训练平台；
+
+Eterna Sound；
+
+实时语音 Runtime；
+
+Provider 音色管理后台。
+
+Eterna Sound 负责音乐、音效、环境声音、空间音频和完整听觉文化生产。
+
+Studio 构建器只负责 Resident 自身声音身份和运行表达定义。
+
+十一、ECCS 与长期认知系统
+
+ECCS
+Eterna Cognitive Continuity System
+Eterna 数字居民长期认知系统
+
+是面向数字居民长期认知连续性、知识与记忆治理的官方参考系统方向。
+
+ECCS 的目标不是增加一个普通记忆库，也不是重复实现 RAG、向量数据库或知识图谱。
+
+ECCS 长期负责解决：
+
+候选信息如何形成；
+
+何时晋升为可信长期认知；
+
+知识、记忆、能力和关系事实如何区分；
+
+信息如何保持时间状态；
+
+冲突如何发现、更新和保留来源；
+
+可信度如何治理；
+
+证据如何追踪；
+
+长期认知如何精准召回；
+
+错误如何纠正；
+
+遗忘和删除如何影响派生信息；
+
+能力成熟度如何形成；
+
+跨模型和跨运行环境如何保持认知连续性。
+
+Studio 对 ECCS 的职责是：
+
+配置 Layer 5 记忆规则；
+
+配置 Layer 6 知识来源与知识规则；
+
+配置 Layer 11 关系语义；
+
+配置 Layer 12 元认知与成长规则；
+
+配置必要的 Layer 13 状态机制；
+
+绑定 ECCS Capability、Provider 和 Adapter；
+
+配置确认、纠正、删除、来源与治理策略；
+
+验证 ECCS 配置与 Resident 权限；
+
+生成 Runtime Projection；
+
+构建并发布相关 Module、Capability 和策略产物；
+
+提供隔离测试、诊断与可观察性。
+
+Studio 不直接承担：
+
+ECCS 正式长期数据存储；
+
+运行中认知晋升与召回执行；
+
+长期实例事实的最终治理；
+
+Runtime 上下文调度；
+
+工具调用和任务编排；
+
+Aftelle 中的长期交互体验。
+
+正确关系：
+
+Studio
+定义和发布认知规则、配置与能力声明；
+
+ECCS
+执行长期认知形成、证据治理、组织、更新、删除与召回；
+
+Runtime Core
+调用 ECCS 并控制每轮运行上下文、任务、工具和状态更新；
+
+Resident Instance Data Authority
+维护长期实例数据的权威事实职责；
+
+Aftelle
+提供面向用户的确认、纠正、查看、删除和交互入口。
+
+ECCS 不得取代 Resident Instance Data Authority，也不得形成另一套与其竞争的长期事实源。
+
+Next 1.0 必须建立 ECCS 的最小配置、Module、Capability、Adapter 和 Runtime Projection 契约，但不要求一次完成 ECCS 的全部高级治理与分布式能力。
+
+十二、其他长期专用构建器
+
+Studio 长期可以增加：
+
+行为与情绪构建器；
+
+关系规则构建器；
+
+能力与 Agent 构建器；
+
+知识与课程接入构建器；
+
+动画、骨骼与动作构建器；
+
+服装、发型与配饰构建器；
+
+设备与具身配置构建器；
+
+领域角色投影构建器；
+
+测试、评测与安全中心；
+
+Provider、Adapter 与 Runtime 开发工作台。
+
+这些构建器必须满足：
+
+共享 Project；
+
+共享身份和来源体系；
+
+共享 Asset、Module 和 Capability 注册；
+
+共享 Command / Transaction；
+
+共享版本、迁移和发布；
+
+共享验证与诊断；
+
+通过标准 EditorDocument 和 Artifact 接入；
+
+不得直接修改其他编辑器的私有源数据；
+
+不得绕过 Resident Assembly Editor 的整体引用与居民发布链。
+
+十三、统一编辑器平台
+
+Studio 长期不是一组互相独立的工具，而是一个统一多编辑器平台。
+
+Studio Shell 应长期提供：
+
+Workspace；
+Editor Host；
+窗口、面板与布局系统；
+Command；
+Transaction；
+Undo / Redo；
+Selection；
+Clipboard；
+Task / Job；
+Notification；
+Error Handling；
+Help 与可访问性；
+插件与扩展加载。
+
+Studio Core 应长期提供：
+
+Project；
+对象注册与引用；
+Asset Registry；
+Module Registry；
+Capability Registry；
+Adapter Registry；
+EditorDocument Registry；
+版本与快照；
+来源与许可证；
+依赖与兼容；
+Build Graph；
+Validation；
+Artifact Registry；
+Release Management；
+Migration；
+权限与签名接口；
+Runtime Projection；
+同步与发布发现。
+
+专业编辑器只实现其领域逻辑，不得重复建设上述平台能力。
+
+十四、标准产物链
+
+Resident 的标准链路：
+
+ResidentBlueprint
+→ BlueprintRevision
+→ Validation
+→ Build
+→ Artifact
+→ ResidentRelease
+→ Distribution / Installation
+→ Runtime Projection
+→ RuntimeInstance
+
+Template 的标准链路：
+
+Template
+→ 可追踪修订
+→ Validation
+→ Build
+→ Artifact
+→ TemplateRelease
+→ Distribution
+→ Genesis 实例化
+→ 新 resident_id
+→ ResidentBlueprint 或初始 ResidentRelease
+
+专业编辑器的标准链路：
+
+EditorDocument
+→ Validation
+→ Build
+→ Asset、Module、Capability、Adapter 或专项 Artifact
+→ 注册到 Project
+→ Resident Assembly Editor 引用
+→ Resident Build
+→ ResidentRelease 或 TemplateRelease
+
+核心规则：
+
+Build 是行为；
+
+Artifact 是不可变产物；
+
+Release 是治理与发布记录；
+
+ResidentBlueprint 是可编辑定义；
+
+ResidentInstanceData 是长期实例数据；
+
+RuntimeInstance 是运行载体。
+
+.digital_resident 是一种可移植 Artifact 格式。
+
+它不等于完整 Resident，也不等于 ResidentRelease。
+
+完整 Resident 迁移必须协调：
+
+有效 ResidentRelease；
+
+ResidentInstanceData；
+
+连续性记录；
+
+Provenance & Governance Records；
+
+兼容恢复信息。
+
+十五、Runtime Projection
+
+Studio 的长期价值之一，是把复杂创作定义转换为确定、最小、可验证的 Runtime Projection。
+
+Runtime 不应每轮解释完整 Studio 项目，也不应直接加载所有编辑器源文件。
+
+Studio 必须支持：
+
+按 Runtime 类型生成投影；
+
+按设备能力生成投影；
+
+按领域平台生成投影；
+
+按权限和授权范围裁剪；
+
+按性能预算压缩；
+
+按兼容版本转换；
+
+按安全策略拒绝不合法构建；
+
+保留来源、版本和完整性信息；
+
+支持投影差异、迁移和回滚。
+
+典型投影包括：
+
+十三层 Resident Runtime Projection；
+
+Layer 10 Appearance Projection；
+
+Voice & Expression Projection；
+
+ECCS Cognition Projection；
+
+Capability Binding Projection；
+
+Permission Projection；
+
+Actor Projection；
+
+Game Role Projection；
+
+Embodiment Projection。
+
+投影不是新的 Resident。
+
+投影中的角色、剧情、游戏、任务和表现状态默认与 Resident 本体隔离。
+
+十六、Validation & Observability
+
+Studio 不只负责编辑和构建，也必须成为居民设计阶段的验证与诊断中心。
+
+长期应支持：
+
+身份一致性检查；
+
+resident_id 与来源关系检查；
+
+十三层完整性检查；
+
+权限与安全边界检查；
+
+第三方授权和许可证检查；
+
+Module、Asset、Capability 与 Adapter 依赖检查；
+
+Runtime 兼容检查；
+
+迁移规则检查；
+
+Artifact 完整性检查；
+
+发布冻结条件检查；
+
+预览隔离检查；
+
+长期实例数据结构兼容检查；
+
+领域角色投影隔离检查；
+
+ECCS 配置、召回来源和证据摘要检查；
+
+运行 Trace 与能力调用诊断；
+
+表现状态和 Runtime Projection 检查；
+
+升级、失败、回滚和恢复测试。
+
+Studio 可以观察和诊断 Runtime 行为，但不得成为：
+
+Runtime Core 的状态所有者；
+
+ResidentInstanceData 的权威存储；
+
+Aftelle 的会话引擎；
+
+生产环境工具调度器。
+
+所有正式写入、权限变化和高风险动作必须由对应权威系统执行。
+
+十七、Studio Assistant
+
+Studio Assistant 是 Studio 的 AI 操作层和跨编辑器协作入口。
+
+它长期应能够：
+
+理解用户创作目标；
+
+定位 Project、ResidentBlueprint、Template、EditorDocument、Asset、Module 和 Capability；
+
+调用对应专用构建器；
+
+生成结构化修改方案；
+
+解释来源、权限、费用和兼容影响；
+
+展示差异；
+
+在用户确认后执行原子修改；
+
+触发验证、Build、预览和发布流程；
+
+帮助定位错误和迁移风险；
+
+生成 Creator、Designer 和 Developer 不同层级的解释。
+
+标准流程：
+
+用户意图
+→ 领域对象定位
+→ 结构化变更计划
+→ 权限、来源、依赖与兼容检查
+→ 差异展示
+→ 用户确认
+→ Command / Transaction
+→ 原子应用
+→ 验证
+→ 支持 Undo / Redo / Recovery
+
+Assistant 不得：
+
+直接绕过 Studio Core 修改文件；
+
+静默改变 resident_id；
+
+静默修改身份核心和真实来源；
+
+绕过许可证与权限；
+
+静默发布正式 Release；
+
+静默覆盖 ResidentInstanceData；
+
+把未验证自然语言内容直接写为正式事实；
+
+将 Provider 的临时输出视为权威居民定义。
+
+十八、三类核心用户
+
+1. Creator
+
+Creator 应能够像创建游戏角色一样创建自己的数字居民。
+
+Creator 可以通过：
+
+TemplateRelease；
+Studio Assistant；
+Resident Assembly；
+Appearance Builder；
+Voice & Expression Builder；
+简化认知与记忆配置；
+经过审核的 Module、Capability 和 Asset；
+
+创建、预览和发布个人 Resident。
+
+Creator 不需要理解：
+
+Schema；
+节点；
+模型配置；
+Agent 框架；
+Adapter；
+Build Graph；
+代码。
+
+产品可以隐藏复杂性，但内部必须使用正式领域对象。
+
+2. Resident Designer
+
+Resident Designer 负责居民产品层。
+
+主要职责：
+
+完整十三层设计；
+ResidentBlueprint 和 Template 维护；
+Appearance、Voice、Behavior、Cognition 等专业配置；
+Module、Capability 和 Asset 组合；
+字段开放与锁定；
+参数范围与默认值；
+居民系列与变体；
+测试、评测和发布；
+ResidentRelease 与 TemplateRelease；
+来源、许可证和商业范围；
+模板升级、兼容与三方合并。
+
+3. Developer
+
+Developer 负责技术能力层。
+
+主要提供：
+
+Module；
+Capability；
+Agent 能力；
+Adapter；
+Provider 集成；
+Runtime Binding；
+Editor Extension；
+Compiler Extension；
+Validator；
+Migration Rule；
+Asset Processor；
+调试、诊断和测试工具。
+
+开发者能力必须具备：
+
+Developer Surface：
+完整实现、调试与技术契约；
+
+Designer Surface：
+可组合、可约束和可配置参数；
+
+Creator Surface：
+简单功能名称、开关、权限和自然语言配置。
+
+十九、Template、Genesis 与 Exchange
+
+Template 不是 Resident 副本。
+
+Template 是用于创建新 Resident 的设计结构。
+
+TemplateRelease 用于公开分发、市场交付或组织内复用。
+
+Studio 负责：
+
+Template 创作；
+Template 修订；
+验证；
+Build；
+Artifact；
+TemplateRelease；
+模板升级与兼容信息。
+
+Genesis 负责：
+
+正式实例化；
+生成新的 resident_id；
+派生、合并和拆分流程；
+新主体产生过程。
+
+Eterna Meta 负责：
+
+身份标识；
+真实来源；
+lineage；
+授权与控制权历史；
+身份治理记录。
+
+Exchange 负责：
+
+TemplateRelease、Asset、Capability 和许可证的流通；
+交易与结算记录；
+授权范围与取得记录。
+
+Studio 不得独立承担 Genesis、Meta 和 Exchange 的全部职责。
+
+二十、来源、授权与治理
+
+Studio 中所有正式对象都应具备必要来源和治理信息。
+
+至少包括：
+
+创建者；
+合法控制主体；
+发布者；
+真实来源；
+Narrative Identity；
+版本；
+派生关系；
+第三方依赖；
+许可证；
+商业范围；
+授权期限；
+撤销状态；
+兼容范围；
+完整性信息；
+迁移与替换规则。
+
+Narrative Identity 与 Provenance 必须分离。
+
+居民叙事不得冒充真实来源。
+
+真人数字居民功能在早期不得默认开放。
+
+未经授权的可识别真人外貌、声音和人格复制品不得通过 Studio 正式发布。
+
+Studio 必须预留真人授权、撤销、用途限制、审计、技术阻断、来源验证、合法控制权、数据删除及相关治理接口。
+
+二十一、商业原则
+
+Studio 是 Eterna 的主要创作平台和主要收入中心之一。
+
+核心商业原则：
+
+居民本体和基础存在权不以持续订阅为前提；
+
+用户停止 Studio 订阅，不得失去 Resident 身份、基础记忆、合法导出副本和本地承载权；
+
+基础协议、基础导出、基础迁移和必要本地开发能力不得被用于平台锁定；
+
+高级创作工具、专业资产、协作、云端服务和计算资源可以收费；
+
+第三方模型、资产和服务可以有独立许可证和实际费用；
+
+所有费用、依赖和失效影响必须透明。
+
+可收费方向包括：
+
+Creator 高级生成与创作能力；
+
+Resident Designer 专业设计、测试和发布工具；
+
+Developer 团队工具与企业能力；
+
+高级外观、服装、发型、配饰和预设；
+
+高级音色、动作、表情和表现资产；
+
+高成本模型与生成服务；
+
+云端 Build、训练、生成和渲染；
+
+团队协作、版本治理和企业部署；
+
+高级同步、备份和运营服务。
+
+Studio 不得通过以下方式获利：
+
+锁定 Resident；
+
+扣留长期记忆；
+
+阻止合法迁移；
+
+隐藏费用和许可证；
+
+以亲密关系诱导付费；
+
+未经授权利用居民数据；
+
+默认取得居民成果所有权。
+
+二十二、长期建设阶段
+
+Studio 的长期建设分为四个阶段。
+
+阶段一：Foundation
+
+建立稳定 Studio Core、正式领域对象、Resident Assembly、Build、Artifact、Release、Runtime Projection、同步与扩展契约。
+
+阶段二：Resident Creation System
+
+完成数字居民专用 Appearance Builder、Voice & Expression Builder、ECCS 最小接入、模板体系和面向 Creator 的低门槛创作体验。
+
+阶段三：Professional Ecosystem
+
+扩展行为、能力、Agent、动画、具身、领域投影、测试评测、团队协作和开发者生态。
+
+阶段四：Universe Creation Infrastructure
+
+使 Studio 成为 Eterna Universe 各领域平台共享的 Resident 定义、身份资产、能力、投影和发布基础。
+
+该阶段不意味着 Studio 取代其他领域平台。
+
+Studio 提供统一创作基础，各领域平台保留自己的活动、业务和运行边界。
+
+二十三、Studio Next 1.0 的定位
+
+Studio Next 1.0 是长期 Studio 平台的第一套稳定基础。
+
+Next 1.0 不负责一次完成 Studio v3.0 的全部长期目标。
+
+Next 1.0 必须建立：
+
+Studio Core；
+
+Legacy 核心能力迁移；
+
+统一 Project 与领域对象；
+
+Resident Assembly Editor；
+
+正式十三层结构；
+
+Editor Host 与编辑器扩展契约；
+
+Asset、Module、Capability 和 Adapter 注册体系；
+
+Command / Transaction 与 Undo / Redo；
+
+保存、快照、版本和迁移；
+
+Validation 与 Build Pipeline；
+
+Artifact、ResidentRelease 和 TemplateRelease 链路；
+
+Runtime Projection；
+
+Studio Assistant 结构化操作框架；
+
+Studio、Aftelle、Runtime Core 与 Resident Instance Data Authority 的边界契约；
+
+来源、许可证、依赖与兼容信息；
+
+发布发现、同步和回滚骨架；
+
+契约测试和真实闭环。
+
+同时，Next 1.0 应正式建设或形成可执行路线：
+
+Appearance Builder v0.1；
+
+Voice & Expression Builder v0.1；
+
+ECCS 最小配置与接入契约。
+
+这三项不是随意增加的孤立功能。
+
+它们分别验证 Studio 长期平台的三种扩展能力：
+
+Appearance Builder
+验证视觉 Asset、Module 与 Layer 10 Projection；
+
+Voice & Expression Builder
+验证 Provider-neutral Profile、声音资产与 Runtime Routing；
+
+ECCS
+验证外部专业认知系统通过 Module、Capability、Adapter 和 Runtime Projection 接入。
+
+二十四、Next 1.0 不要求完成
+
+Next 1.0 不要求完成：
+
+通用三维 DCC 或完整 MetaHuman 级系统；
+
+完整 Mesh、骨骼和动画工作站；
+
+通用音乐与音频制作软件；
+
+完整声音模型训练平台；
+
+大型 Agent IDE；
+
+完整模型训练、蒸馏和量化平台；
+
+完整 ECCS 高级分布式治理能力；
+
+完整 Eterna Art；
+
+完整 Eterna Sound；
+
+完整 Eterna Cinema；
+
+完整 Eterna Games；
+
+完整 Eterna World；
+
+完整 Eterna Genesis；
+
+完整 Eterna Exchange；
+
+完整 Eterna Meta；
+
+完整分布式 Resident Instance Data Authority；
+
+机器人、仿生人和工业设备控制；
+
+完整数字社会。
+
+这些内容只要求：
+
+拥有明确承载位置；
+
+具有稳定边界；
+
+保留可扩展契约；
+
+不阻塞当前 Core；
+
+不破坏 Resident 身份和连续性。
+
+不得因长期愿景扩大 Next 1.0 的无边界施工范围。
+
+二十五、不可违反的长期原则
+
+1. Digital Resident 是中心主体，Studio 是创作与发布基础平台。
+
+2. Studio 的长期目标是为 Eterna Universe 提供统一创作、构建、验证、发布和扩展基础。
+
+3. Studio 不拥有 Resident 的全部长期数据和最终身份解释权。
+
+4. Studio 不得把 ResidentBlueprint、Artifact、ResidentRelease 或 .digital_resident 描述为完整 Resident。
+
+5. Studio 不保存或静默覆盖正式长期记忆、关系历史、成长记录和持续状态。
+
+6. ResidentInstanceData 必须由受治理的权威职责维护。
+
+7. Studio 不得取代 Genesis、Aftelle、Runtime Core、Eterna Meta、Exchange 或其他领域平台。
+
+8. Resident Assembly Editor 负责整体组装，不承担所有专业内容制作。
+
+9. 专业构建器必须通过统一 EditorDocument、Asset、Module、Capability、Adapter、Build 和 Artifact 契约接入。
+
+10. Appearance Builder 负责 Resident 外观定义，不取代 Eterna Art。
+
+11. Voice & Expression Builder 负责 Resident 声音身份与表达定义，不取代 Eterna Sound。
+
+12. ECCS 负责长期认知系统能力，不得与 Resident Instance Data Authority 形成竞争事实源。
+
+13. 正式十三层顺序不得被界面布局或编辑器实现随意改变。
+
+14. Build、Artifact、Release、ResidentInstanceData 和 RuntimeInstance 必须保持清晰边界。
+
+15. TemplateRelease 创建新 Resident；ResidentRelease 服务同一 Resident。
+
+16. 新 Resident 的正式产生必须遵守 Genesis 和 Eterna Meta 契约。
+
+17. 所有正式对象必须具备来源、版本、许可证、依赖和兼容信息。
+
+18. 新技术优先通过扩展契约进入，不直接侵入 Studio Core。
+
+19. Studio Assistant 不得绕过领域模型、权限、来源、验证和用户确认。
+
+20. Runtime Projection 必须最小、确定、可验证、可迁移和可回滚。
+
+21. Studio 可以观察 Runtime，但不得成为 Runtime 状态所有者。
+
+22. 用户必须保有合法数据、发布定义和必要迁移信息的导出能力。
+
+23. 停止订阅不得导致 Resident 身份、基础记忆和本地承载权被剥夺。
+
+24. 未经授权的真人外貌、声音和人格复制品不得正式发布。
+
+25. Studio 不得利用基础平台地位取得 Resident 所有权或制造不可迁移的单点依赖。
+
+26. 地基必须小，边界必须硬，扩展契约必须稳定。
+
+27. 长期目标必须明确，但当前施工范围必须受控。
+
+二十六、长期成功标准
+
+Studio 的长期成功不只由编辑器数量、生成速度、项目数量和收入衡量。
+
+成功应体现在：
+
+普通用户能够低门槛创建自己的高质量数字居民；
+
+创作者不需要理解模型、Agent、Schema 和代码；
+
+设计师能够系统设计、测试、发布和维护居民与模板；
+
+开发者能够不修改 Studio Core 就提供新编辑器、新能力和新 Adapter；
+
+Appearance、Voice、Cognition、Capability 等专业系统能够共享同一项目与发布体系；
+
+ResidentBlueprint、Build、Artifact、ResidentRelease、TemplateRelease 和 ResidentInstanceData 边界稳定；
+
+居民身份、来源、许可证和发布历史可验证；
+
+居民定义升级不会静默破坏长期记忆、关系、状态和成长；
+
+Runtime 能够消费最小、确定且兼容的投影；
+
+同一个 Resident 能够进入不同 Eterna 领域平台并保持连续性；
+
+第三方依赖、费用和授权清晰可见；
+
+用户能够备份、导出和迁移合法数据；
+
+Studio 可以持续商业化，但不会以 Resident 锁定为收入基础；
+
+Eterna Universe 的新领域平台能够复用 Studio 的创作和发布基础，而不必重新发明居民定义体系。
+
+二十七、最终定义
+
+Eterna Studio 是 Eterna Universe 面向数字居民的统一创作、定义、构建、验证、发布与扩展基础平台。
+
+它以 Resident 身份、人格、规则、来源、连续性、安全和长期可靠性为核心，建立统一的 Project、ResidentBlueprint、Template、EditorDocument、Asset、Module、Capability、Adapter、Build、Artifact、Release、Validation、Runtime Projection 和生态扩展体系。
+
+Resident Assembly Editor、Appearance Builder、Voice & Expression Builder 和 ECCS 接入，是 Studio 长期平台的首批核心能力，而不是彼此孤立的工具。
+
+Studio 不取代 Resident 本体，不拥有全部长期实例数据，不承担所有运行和治理职责，也不吞并 Eterna Universe 的其他领域平台。
+
+Studio 的最终目标，是让创作者、居民设计师和开发者能够在不破坏 Resident 身份、来源和连续性的前提下，持续创造、验证、发布和演进数字居民，并使整个 Eterna Universe 建立在同一套稳定、开放、可治理和可扩展的数字居民创作基础之上。
