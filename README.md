@@ -1,6 +1,19 @@
 <!-- BEGIN ETERNA REPOSITORY COMPASS -->
 
-## Eterna 仓库指南针
+# Eterna 仓库指南针 v0.1
+
+内部版本：`v0.1`
+
+文档性质：Eterna 多仓库导航与权威关系说明
+
+状态：`ACTIVE`
+
+文档更新时间：`2026-08-06 21:48`（Asia/Shanghai）
+
+> 汇总 Eterna 各仓库职责与权威关系。
+> 提供 Eterna 多仓库统一导航入口。
+
+---
 
 | 仓库 | 职责 |
 |---|---|

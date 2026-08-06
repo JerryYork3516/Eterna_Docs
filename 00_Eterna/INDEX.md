@@ -1,4 +1,12 @@
-# Eterna · 根定义 · 分类索引 · v4
+# Eterna 根定义 分类索引 v4
+
+内部版本：`v4`
+
+文档性质：Eterna 根定义分类索引
+
+状态：`ACTIVE`
+
+文档更新时间：`2026-08-06 21:48`（Asia/Shanghai）
 
 > 收录 Eterna 核心宪章、根定义、长期原则与最高层级约束。
 > 当前已冻结核心宪章 v0.6 与 Eterna Universe v0.3；Studio Next 可引用的上位文档集合记录于冻结基线。

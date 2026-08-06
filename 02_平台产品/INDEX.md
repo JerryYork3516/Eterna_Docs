@@ -1,4 +1,12 @@
-# Eterna · 平台产品 · 分类索引 · v4
+# Eterna 平台产品 分类索引 v4
+
+内部版本：`v4`
+
+文档性质：Eterna 平台产品分类索引
+
+状态：`ACTIVE`
+
+文档更新时间：`2026-08-06 21:48`（Asia/Shanghai）
 
 > 组织 Eterna 平台与产品的北极星、需求、交互和发布文档。
 > 当前已冻结 Eterna Studio North Star v0.3 内部批准候选版；其他产品北极星仍待补充。
