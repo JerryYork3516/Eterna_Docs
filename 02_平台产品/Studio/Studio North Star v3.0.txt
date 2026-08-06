@@ -2,7 +2,8 @@ Eterna Studio North Star
 
 内部版本：v3.0
 文档性质：Eterna Studio 长期产品北极星与 Eterna Universe 创作基础平台定义
-状态：内部批准候选版
+状态：FROZEN（内部批准候选版）
+冻结日期：2026-08-06
 
 一、文档地位
 
