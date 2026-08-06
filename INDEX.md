@@ -34,7 +34,7 @@
 - [Eterna 核心宪章 v0.6](00_Eterna/Eterna_v0.6.txt)（FROZEN，内部批准候选版）
 - [Eterna Universe v0.3](00_Eterna/Eterna%20Universe_v0.3.txt)（FROZEN，内部批准候选版）
 - [数字居民定义 v0.6](01_核心领域/数字居民定义_v0.6.txt)（FROZEN，内部批准版）
-- [Eterna Studio North Star v3.0](02_平台产品/Studio/Studio%20North%20Star%20v3.0.txt)（FROZEN，内部批准候选版）
+- [Eterna Studio North Star v0.3](02_平台产品/Studio/Studio%20North%20Star%20v0.3.txt)（FROZEN，内部批准候选版）
 
 ### 扩展生态创作材料
 

@@ -1,6 +1,6 @@
 Eterna Studio North Star
 
-内部版本：v3.0
+内部版本：v0.3
 文档性质：Eterna Studio 长期产品北极星与 Eterna Universe 创作基础平台定义
 状态：FROZEN（内部批准候选版）
 冻结日期：2026-08-06
@@ -1088,7 +1088,7 @@ Studio 提供统一创作基础，各领域平台保留自己的活动、业务�
 
 Studio Next 1.0 是长期 Studio 平台的第一套稳定基础。
 
-Next 1.0 不负责一次完成 Studio v3.0 的全部长期目标。
+Next 1.0 不负责一次完成 Studio v0.3 的全部长期目标。
 
 Next 1.0 必须建立：
 

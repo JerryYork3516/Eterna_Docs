@@ -12,18 +12,19 @@
 - 冻结 Eterna 核心宪章 v0.6，保留内部批准候选属性
 - 冻结 Eterna Universe v0.3，保留内部批准候选属性
 - 冻结数字居民定义 v0.6，保留内部批准属性
-- 冻结 Eterna Studio North Star v3.0，保留内部批准候选属性
+- 冻结 Eterna Studio North Star v0.3，保留内部批准候选属性
 - 创建 `00_Eterna/上位文档冻结基线_v0.1.md`
 - Studio Next 节点 1 标记为 `PARTIALLY_FROZEN`
 
 ### 一致性修正
 
 - 修正 Eterna Universe v0.3 第九章中误写为 v0.2 的版本自述
+- 修正 Eterna Studio North Star 的版本标记和文件名：v3.0 → v0.3
 - 更新根目录、Eterna、核心领域和平台产品索引
 
 ### 替换
 
-- 使用 Eterna Studio North Star v3.0（内部批准候选版）替换 v0.2
+- 使用 Eterna Studio North Star v0.3（内部批准候选版）替换 v0.2
 
 ### 索引维护
 
