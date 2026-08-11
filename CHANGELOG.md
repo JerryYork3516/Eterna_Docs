@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v14
+# Eterna 文档变更记录 v15
 
-内部版本：`v14`
+内部版本：`v15`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 21:57`（Asia/Shanghai）
+文档更新时间：`2026-08-11 22:24`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,16 @@
 ---
 
 ## 2026-08-11
+
+### AI 情报自动化系统 Stage 1.9
+
+- 新增 Gmail Delivery Spec v0.1，冻结 Global / China 确定性邮件主题、固定元数据与摘要结构
+- 明确 Docs 日报为长期研究归档，Email 只构成摘要通知投影且不得成为新事实源
+- 定义 Generated、Partial、No valid report、Failed、Revision、投递状态、失败边界与幂等语义
+- 冻结 ChatGPT Gmail 可检索结构、Global / China 隔离、收件人与邮件内容安全边界
+- 未写入真实邮箱地址或任何凭证，未连接 Gmail，未实现 OAuth、SMTP、Gmail API、代码、Secret 或自动化
+- 未修改 Stage 1.1–1.8 或任何 Eterna `FROZEN` 上位文档，未开始 Stage 1.10
+- 同步更新根索引与研究与探索分类索引
 
 ### AI 情报自动化系统 Stage 1.8
 

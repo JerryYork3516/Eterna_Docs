@@ -1,12 +1,12 @@
-# Eterna 文档索引 v14
+# Eterna 文档索引 v15
 
-内部版本：`v14`
+内部版本：`v15`
 
 文档性质：Eterna 正式文档与知识库总索引
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 21:57`（Asia/Shanghai）
+文档更新时间：`2026-08-11 22:24`（Asia/Shanghai）
 
 > Eterna 正式文档与知识体系的唯一权威入口。
 > 当前已有四份上位文档完成核对并组成可引用的冻结输入集合；冻结内容 Commit 为 `392e76e45b7d733ff3ba3e0f2a633b653f3fbacf`。
@@ -59,6 +59,7 @@
 - [AI 情报自动化系统 Stage 1.6 Analysis and Curation Rules](06_研究与探索/AI_情报/Stage1/Analysis_Curation_Rules_v0.1.md)（FROZEN，不构成 Prompt、评分算法、代码或真实日报）
 - [AI 情报自动化系统 Stage 1.7 Eterna Value Extraction Rules](06_研究与探索/AI_情报/Stage1/Eterna_Value_Extraction_Rules_v0.1.md)（FROZEN，只构成研究输入，不构成路线、任务或自动决策）
 - [AI 情报自动化系统 Stage 1.8 Daily Report and Storage Spec](06_研究与探索/AI_情报/Stage1/Daily_Report_and_Storage_Spec_v0.1.md)（FROZEN，不构成日报生成、邮件或自动化实现）
+- [AI 情报自动化系统 Stage 1.9 Gmail Delivery Spec](06_研究与探索/AI_情报/Stage1/Gmail_Delivery_Spec_v0.1.md)（FROZEN，不构成 Gmail 接入、凭证或自动化实现）
 
 ---
 
