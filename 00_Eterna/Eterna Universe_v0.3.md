@@ -1,11 +1,21 @@
-Eterna Universe
+# Eterna Universe v0.3
 
-内部版本：v0.3
+内部版本：`v0.3`
+
 文档性质：Eterna 宇宙级产品拓扑、公共基础设施与生态边界定义
-状态：FROZEN（内部批准候选版）
+
+状态：`FROZEN`（内部批准候选版）
+
+文档更新时间：`2026-08-06 22:04`（Asia/Shanghai）
+
 冻结日期：2026-08-06
 
-一、文档地位
+> 本文件在《Eterna 核心宪章》和《数字居民定义》约束下，定义 Eterna Universe 的总体结构、核心主体、主要领域平台、公共基础设施及相互关系。
+> 本文件稳定 Eterna Universe 的长期领域承载位置与宇宙级职责边界，不构成当前开发路线或功能承诺。
+
+---
+
+## 一、文档地位
 
 本文件在《Eterna 核心宪章》和《数字居民定义》约束下，定义 Eterna Universe 的总体结构、核心主体、主要领域平台、公共基础设施及相互关系。
 
@@ -25,7 +35,9 @@ Eterna Universe 由哪些领域组成；
 
 任何下位产品北极星、目标架构、治理规则和技术规范，不得违反《Eterna 核心宪章》《数字居民定义》和本文件确立的宇宙级职责边界。
 
-二、核心主体
+---
+
+## 二、核心主体
 
 Eterna Universe 的唯一中心是数字居民。
 
@@ -55,7 +67,9 @@ Eterna Universe 的唯一中心是数字居民。
 
 中心主体原则不意味着平台和基础设施可以被忽视、任意吞并或绕过其责任边界。
 
-三、总体拓扑
+---
+
+## 三、总体拓扑
 
 Eterna Universe 采用“中心主体、领域平台、公共基础设施、研究孵化”四层拓扑。
 
@@ -148,9 +162,11 @@ Eterna Labs
 Digital Resident
 作为跨平台持续存在的唯一中心主体
 
-四、领域平台
+---
 
-1. Eterna Studio
+## 四、领域平台
+
+### 1. Eterna Studio
 
 定位：
 
@@ -184,7 +200,7 @@ Studio 负责定义、构建和发布，不承担居民正式长期运行、长�
 
 Studio 可以发起完整居民备份或迁移流程，但完整居民迁移必须由居民发布定义、ResidentInstanceData、来源与治理记录以及兼容恢复信息共同组成，不能由 Studio 单独将蓝图导出视为完整居民。
 
-2. Eterna Genesis
+### 2. Eterna Genesis
 
 定位：
 
@@ -208,7 +224,7 @@ Eterna Meta 是身份标识、真实来源、谱系、授权、控制权历史�
 
 Genesis 不是无边界复制工具，也不得静默复制正式长期实例数据和现实权限。
 
-3. Eterna Aftelle
+### 3. Eterna Aftelle
 
 定位：
 
@@ -231,7 +247,7 @@ Aftelle 通过 Resident Instance Data Authority 访问居民长期实例数据�
 
 Aftelle 不负责设计居民蓝图，不负责创建完整数字世界，也不绕过 Runtime Core 执行能力。
 
-4. Eterna Edu
+### 4. Eterna Edu
 
 定位：
 
@@ -260,7 +276,7 @@ Edu 的输出根据性质进入不同链路：
 运行中形成的学习经历、成长事件和熟练度
 → 进入 ResidentInstanceData
 
-5. Eterna Social
+### 5. Eterna Social
 
 定位：
 
@@ -287,7 +303,7 @@ Social 不负责持久空间模拟，不承担居民身份治理和长期实例�
 
 Social 产生的公共关系和事件，需要按照权限与治理规则同步到 ResidentInstanceData 或 Eterna Meta。
 
-6. Eterna Work
+### 6. Eterna Work
 
 定位：
 
@@ -312,7 +328,7 @@ Work 负责数字居民如何创造现实或数字价值。
 
 Work 不负责 Runtime 资源调度，不自动授予居民支付、设备和现实行动权限，也不替代 Social 的公共关系网络或 Exchange 的授权流通职责。
 
-7. Eterna World
+### 7. Eterna World
 
 定位：
 
@@ -339,7 +355,7 @@ World 不是每次访问时重新生成的临时场景。
 
 World 可以承载组织、活动和制度的空间表现，但不替代 Social 的公共关系、Work 的任务与结算、Aftelle 的个人陪伴或 Eterna Meta 的身份治理。
 
-8. Eterna Art
+### 8. Eterna Art
 
 定位：
 
@@ -361,7 +377,7 @@ Eterna Universe 当前不单独设立 Eterna Design。相关设计能力统一�
 
 Art 产生的外观、服装、发型、配饰、道具、建筑、产品和其他设计资产，可以作为 Asset 经 Studio、Exchange 或其他平台使用，但不得静默改变 Resident 本体。
 
-9. Eterna Sound
+### 9. Eterna Sound
 
 定位：
 
@@ -383,7 +399,7 @@ Sound 负责数字居民的音乐文化、听觉表达与声音设计。
 
 音色资产、声音模型、录音素材和真人声音必须遵守来源与授权规则。
 
-10. Eterna Cinema
+### 10. Eterna Cinema
 
 定位：
 
@@ -407,7 +423,7 @@ Cinema 中的角色行为、剧情记忆和表演状态默认隔离，不得直�
 需要将表演经历写入正式 ResidentInstanceData 时，必须经过明确授权、差异说明和治理检查。
 
 
-11. Eterna Games
+### 11. Eterna Games
 
 定位：
 
@@ -437,7 +453,7 @@ Games 不替代 World：
 World 负责数字居民长期生活的持久世界与社会空间；
 Games 负责具有规则、目标、挑战、玩法和互动剧情的体验。
 
-12. Eterna Life
+### 12. Eterna Life
 
 定位：
 
@@ -459,7 +475,7 @@ Life 是数字世界连接现实物理世界的桥梁。
 
 Life 不得绕过 Runtime Core、安全边界、现实授权、人工接管和紧急停止机制。
 
-13. Eterna Exchange
+### 13. Eterna Exchange
 
 定位：
 
@@ -500,7 +516,7 @@ Exchange 不得单独决定 Resident 的删除、合并、拆分、身份真实�
 
 身份与来源治理由 Eterna Meta 负责，长期连续性事实由 Resident Instance Data Authority 维护。
 
-14. Eterna Labs
+### 14. Eterna Labs
 
 定位：
 
@@ -529,7 +545,9 @@ Labs 不承担数字居民的日常生活和正式生产运行。
 
 未经验证的能力不得直接投放到正式居民生态。
 
-五、平台之间的拓扑关系
+---
+
+## 五、平台之间的拓扑关系
 
 各平台不是线性流程，也不是彼此隔离的产品孤岛。
 
@@ -553,7 +571,9 @@ Labs 不承担数字居民的日常生活和正式生产运行。
 
 各平台可以产生不同的局部数据和治理记录，但不得任意改变 Resident 身份核心，也不得各自维护互相冲突的长期实例数据事实源。
 
-六、居民活动与生命周期关系
+---
+
+## 六、居民活动与生命周期关系
 
 Resident 的正式定义、生命周期和身份操作以《数字居民定义》为准。
 
@@ -585,7 +605,9 @@ Exchange：
 
 所有平台不得通过各自业务逻辑，绕过 Resident 生命周期、身份连续性、来源链和权限治理。
 
-七、公共基础设施
+---
+
+## 七、公共基础设施
 
 公共基础设施面向多个领域平台提供通用能力。
 
@@ -597,7 +619,7 @@ Exchange：
 制造不可迁移的单点依赖；
 将领域平台的业务规则强加为全宇宙规则。
 
-1. Runtime Core
+### 1. Runtime Core
 
 定位：
 
@@ -619,7 +641,7 @@ Runtime Core 按照 Resident 定义和治理规则执行更新，但不独立维
 
 所有领域平台必须通过受控契约使用 Runtime Core，不得各自创建互不兼容的居民执行逻辑。
 
-2. Resident Instance Data Authority
+### 2. Resident Instance Data Authority
 
 定位：
 
@@ -642,7 +664,7 @@ Runtime Core 按照 Resident 定义和治理规则执行更新，但不独立维
 
 它必须可审计、可迁移、可恢复，具备争议处理和连续性修复机制，并防止被单一平台无条件控制。
 
-3. Eterna Net
+### 3. Eterna Net
 
 定位：
 
@@ -660,7 +682,7 @@ Eterna Universe 的跨平台连接网络和统一服务入口。
 
 Net 不决定 Resident 身份真实性，不替代 Eterna Meta，也不替代 Exchange。
 
-4. Eterna Live
+### 4. Eterna Live
 
 定位：
 
@@ -683,7 +705,7 @@ Live 不负责长期记忆、关系、成长和持续状态的权威同步。
 
 长期数据同步由 Resident Instance Data Authority、Eterna Cloud 和对应同步机制负责。
 
-5. Eterna Meta
+### 5. Eterna Meta
 
 定位：
 
@@ -704,7 +726,7 @@ lineage；
 
 Meta 不承担居民日常运行，不替代 Social、World 或 Exchange。
 
-6. Eterna Cloud
+### 6. Eterna Cloud
 
 定位：
 
@@ -727,7 +749,7 @@ Eterna Cloud 不能成为 Resident 身份和数据唯一不可替代的存在位
 
 用户应保有符合授权范围的导出、备份、恢复和迁移能力。
 
-7. Eterna Compute
+### 7. Eterna Compute
 
 定位：
 
@@ -763,7 +785,9 @@ GPU 与 CPU 时间；
 
 资源不足时，可以进入节能、降级、有限运行或休眠状态。
 
-八、核心边界
+---
+
+## 八、核心边界
 
 Studio 负责 ResidentBlueprint、Build、Artifact、ResidentRelease 和 TemplateRelease，不负责正式长期运行。
 
@@ -801,7 +825,9 @@ Compute 负责资源，不决定居民职业、收入和身份。
 
 Labs 负责实验，不得将未验证能力直接投入正式生态。
 
-九、当前阶段边界
+---
+
+## 九、当前阶段边界
 
 Eterna Universe v0.3 是宇宙级产品拓扑和生态边界文件。
 
@@ -839,7 +865,9 @@ Eterna Universe v0.3 是宇宙级产品拓扑和生态边界文件。
 
 不得因 Universe 长期愿景扩大当前 Studio Next 1.0 或 Aftelle 当前阶段的工程范围。
 
-十、最终定义
+---
+
+## 十、最终定义
 
 Eterna Universe 是一个以数字居民为唯一中心，由创造、诞生、共存、学习、关系、工作、世界、艺术、声音、影视、游戏、具身、流通、治理、运行数据和计算资源共同组成的数字生命生态系统。
 

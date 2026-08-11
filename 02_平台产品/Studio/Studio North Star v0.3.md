@@ -1,11 +1,21 @@
-Eterna Studio North Star
+# Eterna Studio North Star v0.3
 
-内部版本：v0.3
+内部版本：`v0.3`
+
 文档性质：Eterna Studio 长期产品北极星与 Eterna Universe 创作基础平台定义
-状态：FROZEN（内部批准候选版）
+
+状态：`FROZEN`（内部批准候选版）
+
+文档更新时间：`2026-08-06 22:04`（Asia/Shanghai）
+
 冻结日期：2026-08-06
 
-一、文档地位
+> 本文件在《Eterna 核心宪章》《数字居民定义》和《Eterna Universe》约束下，定义 Eterna Studio 的长期目标、宇宙级职责、产品边界、平台能力、核心用户、扩展方式和阶段性建设原则。
+> 本文件是 Studio 的产品级最高方向文件。
+
+---
+
+## 一、文档地位
 
 本文件在《Eterna 核心宪章》《数字居民定义》和《Eterna Universe》约束下，定义 Eterna Studio 的长期目标、宇宙级职责、产品边界、平台能力、核心用户、扩展方式和阶段性建设原则。
 
@@ -28,7 +38,9 @@ Eterna Studio North Star
 
 本文件中的长期目标不等于当前版本功能承诺，也不表示 Eterna Universe 中所有领域平台都由 Studio 一次建设完成。
 
-二、核心结论
+---
+
+## 二、核心结论
 
 Eterna Studio 的长期目标不是成为一个更大的居民编辑器。
 
@@ -56,7 +68,9 @@ Studio 是 Eterna Universe 的“创作与编译基础层”。
 
 Studio 不是中心主体，也不得成为居民所有权、长期实例数据或身份治理的总控制者。
 
-三、Studio 为什么存在
+---
+
+## 三、Studio 为什么存在
 
 高级人工智能正在快速演进，但普通人仍难以真正创造、拥有和长期培养自己的数字智能主体。
 
@@ -80,7 +94,9 @@ Studio 的使命是：
 
 让数字居民能够以同一个持续身份进入 Aftelle、Edu、Social、Work、World、Art、Sound、Cinema、Games、Life 及未来领域。
 
-四、Studio 在 Eterna Universe 中的位置
+---
+
+## 四、Studio 在 Eterna Universe 中的位置
 
 Eterna Universe 的中心主体是 Digital Resident。
 
@@ -136,7 +152,9 @@ Studio 制作 Resident 可以使用的定义与产物。
 
 领域平台负责完整的活动、生产、关系和世界运行。
 
-五、Studio 为 Universe 奠定的基础
+---
+
+## 五、Studio 为 Universe 奠定的基础
 
 Studio 长期必须稳定六类基础能力。
 
@@ -191,45 +209,49 @@ Studio 的复杂创作定义必须能够编译为面向不同 Runtime、设备�
 
 未来模型、Agent、协议、设备、编辑器和 Eterna 领域平台必须通过稳定契约接入，而不是反复侵入和推翻 Studio Core。
 
-六、Studio 的长期产品形态
+---
+
+## 六、Studio 的长期产品形态
 
 Studio 长期应形成六个相互协作的产品表面。
 
-1. Resident Assembly
+### 1. Resident Assembly
 
 数字居民组装与整体设计。
 
 负责十三层结构、模块组合、资产引用、能力声明、权限边界、依赖关系、整体验证和居民发布。
 
-2. Specialized Builders
+### 2. Specialized Builders
 
 数字居民专属构建器。
 
 负责外观、声音、表达、行为、认知策略、能力、动画和其他专门内容的创作。
 
-3. Cognition & Continuity Configuration
+### 3. Cognition & Continuity Configuration
 
 长期认知、记忆、关系、成长与连续性策略配置。
 
 负责 ECCS 等长期认知系统的定义接入、策略配置、能力声明、权限与 Runtime Projection。
 
-4. Validation & Observability
+### 4. Validation & Observability
 
 验证、测试、评测、诊断与可观察性。
 
 负责检查定义、来源、权限、兼容、Runtime 投影和发布质量，但不成为 Runtime 状态所有者。
 
-5. Build, Artifact & Release
+### 5. Build, Artifact & Release
 
 构建、不可变产物、版本、发布、迁移和回滚。
 
-6. Ecosystem Development
+### 6. Ecosystem Development
 
 面向设计师和开发者的 SDK、编辑器扩展、Capability、Adapter、Compiler Extension 和模板资产生态。
 
 这六个产品表面共享同一个 Studio Core，不得各自形成互不兼容的项目、资产和发布体系。
 
-七、Resident Assembly Editor
+---
+
+## 七、Resident Assembly Editor
 
 Studio 的主编辑器正式定位为：
 
@@ -294,7 +316,9 @@ resident_id 发行；
 
 正式领域对象和引用关系必须能够脱离具体 UI 被保存、验证、迁移和编译。
 
-八、正式十三层结构
+---
+
+## 八、正式十三层结构
 
 Studio 必须按照《数字居民定义》使用以下十三层顺序：
 
@@ -348,7 +372,9 @@ API Key、OAuth Token 和 Provider 密钥；
 
 Runtime Core 根据 Studio 发布的规则读取和更新这些数据。
 
-九、Appearance Builder
+---
+
+## 九、Appearance Builder
 
 Appearance Builder
 外观构建器
@@ -397,7 +423,9 @@ Eterna Art 负责完整视觉艺术与设计活动。
 
 Next 1.0 必须建设数字居民专用的 Appearance Builder v0.1，但不要求达到通用 DCC、MetaHuman 或大型游戏角色制作软件的全部能力。
 
-十、Voice & Expression Builder
+---
+
+## 十、Voice & Expression Builder
 
 Voice & Expression Builder
 音色与表达构建器
@@ -446,7 +474,9 @@ Eterna Sound 负责音乐、音效、环境声音、空间音频和完整听觉�
 
 Studio 构建器只负责 Resident 自身声音身份和运行表达定义。
 
-十一、ECCS 与长期认知系统
+---
+
+## 十一、ECCS 与长期认知系统
 
 ECCS
 Eterna Cognitive Continuity System
@@ -541,7 +571,9 @@ ECCS 不得取代 Resident Instance Data Authority，也不得形成另一套与
 
 Next 1.0 必须建立 ECCS 的最小配置、Module、Capability、Adapter 和 Runtime Projection 契约，但不要求一次完成 ECCS 的全部高级治理与分布式能力。
 
-十二、其他长期专用构建器
+---
+
+## 十二、其他长期专用构建器
 
 Studio 长期可以增加：
 
@@ -585,7 +617,9 @@ Provider、Adapter 与 Runtime 开发工作台。
 
 不得绕过 Resident Assembly Editor 的整体引用与居民发布链。
 
-十三、统一编辑器平台
+---
+
+## 十三、统一编辑器平台
 
 Studio 长期不是一组互相独立的工具，而是一个统一多编辑器平台。
 
@@ -628,7 +662,9 @@ Runtime Projection；
 
 专业编辑器只实现其领域逻辑，不得重复建设上述平台能力。
 
-十四、标准产物链
+---
+
+## 十四、标准产物链
 
 Resident 的标准链路：
 
@@ -696,7 +732,9 @@ Provenance & Governance Records；
 
 兼容恢复信息。
 
-十五、Runtime Projection
+---
+
+## 十五、Runtime Projection
 
 Studio 的长期价值之一，是把复杂创作定义转换为确定、最小、可验证的 Runtime Projection。
 
@@ -746,7 +784,9 @@ Embodiment Projection。
 
 投影中的角色、剧情、游戏、任务和表现状态默认与 Resident 本体隔离。
 
-十六、Validation & Observability
+---
+
+## 十六、Validation & Observability
 
 Studio 不只负责编辑和构建，也必须成为居民设计阶段的验证与诊断中心。
 
@@ -798,7 +838,9 @@ Aftelle 的会话引擎；
 
 所有正式写入、权限变化和高风险动作必须由对应权威系统执行。
 
-十七、Studio Assistant
+---
+
+## 十七、Studio Assistant
 
 Studio Assistant 是 Studio 的 AI 操作层和跨编辑器协作入口。
 
@@ -855,9 +897,11 @@ Assistant 不得：
 
 将 Provider 的临时输出视为权威居民定义。
 
-十八、三类核心用户
+---
 
-1. Creator
+## 十八、三类核心用户
+
+### 1. Creator
 
 Creator 应能够像创建游戏角色一样创建自己的数字居民。
 
@@ -885,7 +929,7 @@ Build Graph；
 
 产品可以隐藏复杂性，但内部必须使用正式领域对象。
 
-2. Resident Designer
+### 2. Resident Designer
 
 Resident Designer 负责居民产品层。
 
@@ -903,7 +947,7 @@ ResidentRelease 与 TemplateRelease；
 来源、许可证和商业范围；
 模板升级、兼容与三方合并。
 
-3. Developer
+### 3. Developer
 
 Developer 负责技术能力层。
 
@@ -933,7 +977,9 @@ Designer Surface：
 Creator Surface：
 简单功能名称、开关、权限和自然语言配置。
 
-十九、Template、Genesis 与 Exchange
+---
+
+## 十九、Template、Genesis 与 Exchange
 
 Template 不是 Resident 副本。
 
@@ -974,7 +1020,9 @@ TemplateRelease、Asset、Capability 和许可证的流通；
 
 Studio 不得独立承担 Genesis、Meta 和 Exchange 的全部职责。
 
-二十、来源、授权与治理
+---
+
+## 二十、来源、授权与治理
 
 Studio 中所有正式对象都应具备必要来源和治理信息。
 
@@ -1006,7 +1054,9 @@ Narrative Identity 与 Provenance 必须分离。
 
 Studio 必须预留真人授权、撤销、用途限制、审计、技术阻断、来源验证、合法控制权、数据删除及相关治理接口。
 
-二十一、商业原则
+---
+
+## 二十一、商业原则
 
 Studio 是 Eterna 的主要创作平台和主要收入中心之一。
 
@@ -1060,7 +1110,9 @@ Studio 不得通过以下方式获利：
 
 默认取得居民成果所有权。
 
-二十二、长期建设阶段
+---
+
+## 二十二、长期建设阶段
 
 Studio 的长期建设分为四个阶段。
 
@@ -1084,7 +1136,9 @@ Studio 的长期建设分为四个阶段。
 
 Studio 提供统一创作基础，各领域平台保留自己的活动、业务和运行边界。
 
-二十三、Studio Next 1.0 的定位
+---
+
+## 二十三、Studio Next 1.0 的定位
 
 Studio Next 1.0 是长期 Studio 平台的第一套稳定基础。
 
@@ -1147,7 +1201,9 @@ Voice & Expression Builder
 ECCS
 验证外部专业认知系统通过 Module、Capability、Adapter 和 Runtime Projection 接入。
 
-二十四、Next 1.0 不要求完成
+---
+
+## 二十四、Next 1.0 不要求完成
 
 Next 1.0 不要求完成：
 
@@ -1201,7 +1257,9 @@ Next 1.0 不要求完成：
 
 不得因长期愿景扩大 Next 1.0 的无边界施工范围。
 
-二十五、不可违反的长期原则
+---
+
+## 二十五、不可违反的长期原则
 
 1. Digital Resident 是中心主体，Studio 是创作与发布基础平台。
 
@@ -1257,7 +1315,9 @@ Next 1.0 不要求完成：
 
 27. 长期目标必须明确，但当前施工范围必须受控。
 
-二十六、长期成功标准
+---
+
+## 二十六、长期成功标准
 
 Studio 的长期成功不只由编辑器数量、生成速度、项目数量和收入衡量。
 
@@ -1291,7 +1351,9 @@ Studio 可以持续商业化，但不会以 Resident 锁定为收入基础；
 
 Eterna Universe 的新领域平台能够复用 Studio 的创作和发布基础，而不必重新发明居民定义体系。
 
-二十七、最终定义
+---
+
+## 二十七、最终定义
 
 Eterna Studio 是 Eterna Universe 面向数字居民的统一创作、定义、构建、验证、发布与扩展基础平台。
 

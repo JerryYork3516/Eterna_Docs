@@ -1,12 +1,12 @@
-# Eterna 文档索引 v5
+# Eterna 文档索引 v6
 
-内部版本：`v5`
+内部版本：`v6`
 
 文档性质：Eterna 正式文档与知识库总索引
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-06 21:48`（Asia/Shanghai）
+文档更新时间：`2026-08-06 22:04`（Asia/Shanghai）
 
 > Eterna 正式文档与知识体系的唯一权威入口。
 > 当前已有四份上位文档完成核对并组成可引用的冻结输入集合；冻结内容 Commit 为 `392e76e45b7d733ff3ba3e0f2a633b653f3fbacf`。
@@ -39,15 +39,15 @@
 
 ### 已冻结上位文档
 
-- [Eterna 核心宪章 v0.6](00_Eterna/Eterna_v0.6.txt)（FROZEN，内部批准候选版）
-- [Eterna Universe v0.3](00_Eterna/Eterna%20Universe_v0.3.txt)（FROZEN，内部批准候选版）
-- [数字居民定义 v0.6](01_核心领域/数字居民定义_v0.6.txt)（FROZEN，内部批准版）
-- [Eterna Studio North Star v0.3](02_平台产品/Studio/Studio%20North%20Star%20v0.3.txt)（FROZEN，内部批准候选版）
+- [Eterna 核心宪章 v0.6](00_Eterna/Eterna_v0.6.md)（FROZEN，内部批准候选版）
+- [Eterna Universe v0.3](00_Eterna/Eterna%20Universe_v0.3.md)（FROZEN，内部批准候选版）
+- [数字居民定义 v0.6](01_核心领域/数字居民定义_v0.6.md)（FROZEN，内部批准版）
+- [Eterna Studio North Star v0.3](02_平台产品/Studio/Studio%20North%20Star%20v0.3.md)（FROZEN，内部批准候选版）
 
 ### 扩展生态创作材料
 
-- [《零号公民：最后备份》](04_扩展生态/《零号公民：最后备份》/第零公民.txt)
-- [《零号公民：最后备份》故事大纲](04_扩展生态/《零号公民：最后备份》/大纲.txt)
+- [《零号公民：最后备份》](04_扩展生态/《零号公民：最后备份》/第零公民.md)
+- [《零号公民：最后备份》故事大纲](04_扩展生态/《零号公民：最后备份》/大纲.md)
 
 ---
 
