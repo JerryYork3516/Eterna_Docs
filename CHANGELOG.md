@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v10
+# Eterna 文档变更记录 v11
 
-内部版本：`v10`
+内部版本：`v11`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 15:17`（Asia/Shanghai）
+文档更新时间：`2026-08-11 19:50`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,16 @@
 ---
 
 ## 2026-08-11
+
+### AI 情报自动化系统 Stage 1.5
+
+- 新增 Dedup and Clustering Rules v0.1，冻结 Exact Duplicate、Near Duplicate 与 Same Event, Different Evidence 三层语义
+- 定义去重判断信号、Evidence 形成、Event 聚类、冲突证据、event_id 保持与新建边界
+- 明确信息状态追加式演进、Global / China 隔离、Eterna 相关性排除与 Conservative Principle
+- 保持 IntelligenceEvent 到原始 URL 的完整追溯，Exact Duplicate 折叠后仍保留重复观察能力
+- 未实现算法、代码、Schema、Prompt、数据库、embedding、向量检索或模型，未开始 Stage 1.6
+- 未修改 Stage 1.1–1.4 或任何 Eterna `FROZEN` 上位文档
+- 同步更新根索引与研究与探索分类索引
 
 ### AI 情报自动化系统 Stage 1.4
 
