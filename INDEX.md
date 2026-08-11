@@ -1,12 +1,12 @@
-# Eterna 文档索引 v8
+# Eterna 文档索引 v9
 
-内部版本：`v8`
+内部版本：`v9`
 
 文档性质：Eterna 正式文档与知识库总索引
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 09:57`（Asia/Shanghai）
+文档更新时间：`2026-08-11 10:17`（Asia/Shanghai）
 
 > Eterna 正式文档与知识体系的唯一权威入口。
 > 当前已有四份上位文档完成核对并组成可引用的冻结输入集合；冻结内容 Commit 为 `392e76e45b7d733ff3ba3e0f2a633b653f3fbacf`。
@@ -53,6 +53,7 @@
 
 - [AI 情报自动化系统 Stage 1.1 目标与边界](06_研究与探索/AI_情报/Stage1/Stage_1.1_目标与边界.md)（FROZEN，不构成正式产品定义）
 - [AI 情报自动化系统 Stage 1.2 Source Registry](06_研究与探索/AI_情报/Stage1/Source_Registry_v0.1.md)（FROZEN，不构成采集授权或技术接入方案）
+- [AI 情报自动化系统 Stage 1.3 Collection Architecture](06_研究与探索/AI_情报/Stage1/Collection_Architecture_v0.1.md)（FROZEN，不构成代码实现或部署方案）
 
 ---
 

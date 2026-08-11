@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v8
+# Eterna 文档变更记录 v9
 
-内部版本：`v8`
+内部版本：`v9`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 09:57`（Asia/Shanghai）
+文档更新时间：`2026-08-11 10:17`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,16 @@
 ---
 
 ## 2026-08-11
+
+### AI 情报自动化系统 Stage 1.3
+
+- 新增 Collection Architecture v0.1，定义 Source Registry 到 Analysis Pipeline 的采集层级与职责
+- 评估 Official API、RSS / Feed、Web Page Monitor 与 Search Discovery 四类 Collector
+- 建立 Global / China 来源与 Collector 映射、合法降级顺序与成本原则
+- 明确 RSSHub 只是候选而非默认依赖，社区搜索只用于趋势发现
+- 未写采集代码，未部署服务，未配置 API，未创建自动化任务，未开始 Stage 1.4
+- 未修改 Stage 1.1、Stage 1.2 或任何 Eterna `FROZEN` 上位文档
+- 同步更新根索引与研究与探索分类索引
 
 ### AI 情报自动化系统 Stage 1.2
 
