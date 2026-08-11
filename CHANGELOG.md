@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v9
+# Eterna 文档变更记录 v10
 
-内部版本：`v9`
+内部版本：`v10`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 10:17`（Asia/Shanghai）
+文档更新时间：`2026-08-11 15:17`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,15 @@
 ---
 
 ## 2026-08-11
+
+### AI 情报自动化系统 Stage 1.4
+
+- 新增 Intelligence Data Model v0.1，定义 CandidateItem、Evidence、IntelligenceEvent 与 IntelligenceReport 四层对象
+- 冻结来源、时间、状态、技术分类、Eterna 标签与端到端可追溯字段语义
+- 明确事件状态随证据追加更新但不得覆盖历史来源，并保持 Global / China 两条日报链独立
+- 未实现代码、Schema、数据库、Collector、去重、聚类、Prompt、摘要、邮件或自动化，未开始 Stage 1.5
+- 未修改 Stage 1.1–1.3 或任何 Eterna `FROZEN` 上位文档
+- 同步更新根索引与研究与探索分类索引
 
 ### AI 情报自动化系统 Stage 1.3
 
