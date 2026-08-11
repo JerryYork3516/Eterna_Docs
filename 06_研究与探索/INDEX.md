@@ -1,12 +1,12 @@
-# Eterna 研究与探索 分类索引 v2
+# Eterna 研究与探索 分类索引 v3
 
-内部版本：`v2`
+内部版本：`v3`
 
 文档性质：Eterna 研究与探索分类索引
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 09:23`（Asia/Shanghai）
+文档更新时间：`2026-08-11 09:57`（Asia/Shanghai）
 
 > 收录尚未进入正式产品与架构体系的研究材料和探索性结论。
 > 本目录内容默认不构成产品承诺或正式工程契约。
@@ -24,6 +24,7 @@
 ## 当前文档
 
 - [AI 情报自动化系统 Stage 1.1 目标与边界](AI_情报/Stage1/Stage_1.1_目标与边界.md)（FROZEN，研究/工程规划）
+- [AI 情报自动化系统 Stage 1.2 Source Registry](AI_情报/Stage1/Source_Registry_v0.1.md)（FROZEN，来源注册与治理规范）
 
 ---
 
