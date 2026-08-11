@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v13
+# Eterna 文档变更记录 v14
 
-内部版本：`v13`
+内部版本：`v14`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 21:09`（Asia/Shanghai）
+文档更新时间：`2026-08-11 21:57`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,16 @@
 ---
 
 ## 2026-08-11
+
+### AI 情报自动化系统 Stage 1.8
+
+- 新增 Daily Report and Storage Spec v0.1，冻结 Global / China 日报格式、Docs 目标路径与唯一文件命名
+- 定义报告时间、头部状态、固定章节、事件来源展示、P0–P3 覆盖情况与 Eterna 价值提取区块
+- 明确空日报、重跑、Revision History、归档和 Global / China 隔离规则
+- 只冻结目标目录结构，未创建真实日报、未来月份目录、`README.md` 或其他占位文件
+- 未实现生成器、Prompt、模型、Schema、数据库、邮件、GitHub Actions、cron 或自动提交，未开始 Stage 1.9
+- 未修改 Stage 1.1–1.7 或任何 Eterna `FROZEN` 上位文档
+- 同步更新根索引与研究与探索分类索引
 
 ### AI 情报自动化系统 Stage 1.7
 
