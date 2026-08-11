@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v11
+# Eterna 文档变更记录 v12
 
-内部版本：`v11`
+内部版本：`v12`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 19:50`（Asia/Shanghai）
+文档更新时间：`2026-08-11 20:28`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,16 @@
 ---
 
 ## 2026-08-11
+
+### AI 情报自动化系统 Stage 1.6
+
+- 新增 Analysis and Curation Rules v0.1，冻结日报准入、既有 Event 再次准入与低价值过滤规则
+- 定义 Confidence、Information Status、Importance 的判断边界及日报排序原则
+- 冻结 What happened、Evidence / Sources 与 Why it matters 的事实约束摘要和来源展示语义
+- 保持 Global / China 独立，并仅为 Stage 1.7 预留既有分析字段的读取边界
+- 未实现 LLM Prompt、模型调用、评分算法、代码、Schema、数据库或真实日报，未开始 Stage 1.7
+- 未修改 Stage 1.1–1.5 或任何 Eterna `FROZEN` 上位文档
+- 同步更新根索引与研究与探索分类索引
 
 ### AI 情报自动化系统 Stage 1.5
 
