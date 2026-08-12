@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v19
+# Eterna 文档变更记录 v20
 
-内部版本：`v19`
+内部版本：`v20`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-12 21:57`（Asia/Shanghai）
+文档更新时间：`2026-08-12 22:30`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,16 @@
 ---
 
 ## 2026-08-12
+
+### AI 情报自动化系统 Stage 1.12 A3
+
+- 实现 CandidateItem、Evidence、IntelligenceEvent 与 IntelligenceReport 四层不可变强类型模型
+- 严格实现 Stage 1.4 冻结的 Region、来源、采集、证据关系、信息状态、可信度、重要度、技术分类和 Eterna 标签值
+- 实现 timezone-aware 时间门禁、顺序引用、最小追加式状态历史及未冻结嵌套内容的受限不可变 JSON 表示
+- 新增严格、确定性的 dict / JSON 序列化与反序列化，拒绝未知字段、缺失字段、错误类型、枚举拼写、naive datetime、重复 JSON 字段与非有限数值
+- Python 3.13 Offline 测试共 154 项通过；compileall 与 `git diff --check` 通过，未新增第三方依赖
+- 未实现 State、幂等、Revision 持久化、Collector、去重、聚类、分析、报告渲染、Gmail、Git Adapter 或 Workflow，未开始 Stage 1.12 A4
+- Stage 1.1–1.11 与所有 Eterna `FROZEN` 正文均未修改；`AUTOMATION_MAIN_WRITE_GATE` 保持 `NOT READY`
 
 ### AI 情报自动化系统 Stage 1.12 A2
 
