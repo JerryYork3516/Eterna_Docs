@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v16
+# Eterna 文档变更记录 v17
 
-内部版本：`v16`
+内部版本：`v17`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-12 09:04`（Asia/Shanghai）
+文档更新时间：`2026-08-12 10:16`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,17 @@
 ---
 
 ## 2026-08-12
+
+### AI 情报自动化系统 Stage 1.11
+
+- 新增 Implementation Plan and Dependency Freeze v0.1，冻结 Python 3.13 单语言实现、自动化目录与最小依赖边界
+- 划分 MVP、条件接入及 Later / Discovery Collector，MVP 不依赖 Search、RSSHub、浏览器自动化或封闭平台完整覆盖
+- 冻结 OpenAI 官方 API、Google Gmail API、机器配置、Secret、最小权限和合法接口边界
+- 采用 Region 分片非敏感 JSON 与短期 Actions 投递回执的轻量状态方案，并记录 `main` 直接写入风险与 MVP 门禁
+- 定义 Unit、Fixture / Offline、Integration、End-to-End 测试体系、Fixture 范围及 Stage 1.12 确定实现顺序
+- 未创建代码、Workflow、Secret、依赖文件、外部 API 调用或真实日报，未开始 Stage 1.12
+- 未修改 Stage 1.1–1.10 或任何 Eterna `FROZEN` 上位文档
+- 同步更新根索引与研究与探索分类索引
 
 ### AI 情报自动化系统 Stage 1.10
 
