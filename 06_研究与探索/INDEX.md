@@ -1,12 +1,12 @@
-# Eterna 研究与探索 分类索引 v10
+# Eterna 研究与探索 分类索引 v11
 
-内部版本：`v10`
+内部版本：`v11`
 
 文档性质：Eterna 研究与探索分类索引
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 22:24`（Asia/Shanghai）
+文档更新时间：`2026-08-12 09:04`（Asia/Shanghai）
 
 > 收录尚未进入正式产品与架构体系的研究材料和探索性结论。
 > 本目录内容默认不构成产品承诺或正式工程契约。
@@ -32,6 +32,7 @@
 - [AI 情报自动化系统 Stage 1.7 Eterna Value Extraction Rules](AI_情报/Stage1/Eterna_Value_Extraction_Rules_v0.1.md)（FROZEN，Eterna 价值提取规则）
 - [AI 情报自动化系统 Stage 1.8 Daily Report and Storage Spec](AI_情报/Stage1/Daily_Report_and_Storage_Spec_v0.1.md)（FROZEN，日报格式与 Docs 存储规范）
 - [AI 情报自动化系统 Stage 1.9 Gmail Delivery Spec](AI_情报/Stage1/Gmail_Delivery_Spec_v0.1.md)（FROZEN，邮件摘要与投递规范）
+- [AI 情报自动化系统 Stage 1.10 Automation Scheduling and Git Spec](AI_情报/Stage1/Automation_Scheduling_and_Git_Spec_v0.1.md)（FROZEN，GitHub Actions、调度与自动提交规范）
 
 ---
 

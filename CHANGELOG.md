@@ -1,17 +1,30 @@
-# Eterna 文档变更记录 v15
+# Eterna 文档变更记录 v16
 
-内部版本：`v15`
+内部版本：`v16`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-11 22:24`（Asia/Shanghai）
+文档更新时间：`2026-08-12 09:04`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
 
 ---
+
+## 2026-08-12
+
+### AI 情报自动化系统 Stage 1.10
+
+- 新增 Automation Scheduling and Git Spec v0.1，冻结 GitHub Actions 调度平台与 `Asia/Shanghai` 业务时区
+- 冻结 Global 每日 08:00、China 每日 20:00，以及两条独立任务和单次 Pipeline 顺序
+- 定义仅写 `reports/**`、确定性 commit、`main` push、并发与幂等边界
+- 区分采集、分析、报告、Git 和邮件失败，并冻结针对失败步骤的安全重试规则
+- 明确 Secrets、最小权限、日志安全、成本和人工触发边界，禁止使用 ChatGPT / Codex 个人凭证作为运行时后端
+- 未创建 Workflow、Secret、代码、Gmail/API 配置或真实日报，未开始 Stage 1.11
+- 未修改 Stage 1.1–1.9 或任何 Eterna `FROZEN` 上位文档
+- 同步更新根索引与研究与探索分类索引
 
 ## 2026-08-11
 
