@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "region": "Global",
+  "sources": [
+    {
+      "registry_ref": "OpenAI",
+      "region": "Global",
+      "collector_type": "public_web",
+      "url": "https://openai.com/news/",
+      "enabled": true,
+      "parameters": {}
+    },
+    {
+      "registry_ref": "Hugging Face",
+      "region": "Global",
+      "collector_type": "official_api",
+      "url": "https://github.com/huggingface",
+      "enabled": true,
+      "parameters": {}
+    },
+    {
+      "registry_ref": "Google DeepMind / Gemini",
+      "region": "Global",
+      "collector_type": "public_web",
+      "url": "https://deepmind.google/discover/blog/",
+      "enabled": true,
+      "parameters": {}
+    }
+  ]
+}

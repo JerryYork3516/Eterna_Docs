@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "region": "China",
+  "sources": [
+    {
+      "registry_ref": "DeepSeek",
+      "region": "China",
+      "collector_type": "official_api",
+      "url": "https://github.com/deepseek-ai",
+      "enabled": true,
+      "parameters": {}
+    },
+    {
+      "registry_ref": "阿里 Qwen",
+      "region": "China",
+      "collector_type": "public_web",
+      "url": "https://qwenlm.github.io/blog/",
+      "enabled": true,
+      "parameters": {}
+    },
+    {
+      "registry_ref": "字节 Seed / 豆包",
+      "region": "China",
+      "collector_type": "public_web",
+      "url": "https://seed.bytedance.com/en/blog",
+      "enabled": true,
+      "parameters": {}
+    }
+  ]
+}

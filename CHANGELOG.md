@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v18
+# Eterna 文档变更记录 v19
 
-内部版本：`v18`
+内部版本：`v19`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-12 18:45`（Asia/Shanghai）
+文档更新时间：`2026-08-12 21:57`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,16 @@
 ---
 
 ## 2026-08-12
+
+### AI 情报自动化系统 Stage 1.12 A2
+
+- 从 FROZEN Source Registry 精确派生 Global / China 各 3 条非空 MVP 机器配置，全部使用已登记官方名称与公开 URL
+- 新增标准库 Config Loader 与只读 Registry 表格解析，严格校验 schema、Region、Collector 白名单、URL、未知字段和 Registry 引用
+- 递归拒绝 Secret、Token、Cookie、Session、认证与收件人等敏感配置字段，保持默认无 Secret、无网络访问
+- 新增 Region-specific 默认拒绝路径策略，只允许规范日报路径及对应 `automation/state/{region}.json`，并拒绝跨区、绝对路径、traversal 与 symlink 逃逸
+- Python 3.13.15 Offline 测试共 49 项通过；未增加第三方依赖，未创建日报、正式状态、Workflow 或任何外部 API / Gmail / LLM 调用
+- Source Registry、Stage 1.1–1.11 与所有 Eterna `FROZEN` 正文均未修改，未开始 Stage 1.12 A3
+- `AUTOMATION_MAIN_WRITE_GATE` 保持 `NOT READY`
 
 ### AI 情报自动化系统 Stage 1.12 A1
 
