@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v17
+# Eterna 文档变更记录 v18
 
-内部版本：`v17`
+内部版本：`v18`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-12 10:16`（Asia/Shanghai）
+文档更新时间：`2026-08-12 18:45`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,17 @@
 ---
 
 ## 2026-08-12
+
+### AI 情报自动化系统 Stage 1.12 A1
+
+- 完成 Python、OpenAI Responses API、Gmail API / OAuth 与 Git / `main` 四项实施前门禁核验
+- 冻结并验证 Python 3.13.15，以及 Stage 1.11 批准依赖的精确补丁版本、许可证与 Python 3.13 兼容性
+- 新增最小 Python 项目骨架、带传递依赖和哈希校验的 `requirements.lock`，并建立默认断网、无需 Secret 的离线测试
+- 锁文件由临时固定版本 `uv 0.12.3` 生成；`uv` 仅为锁定工具，不是运行时依赖
+- 当前 `main` 未启用 branch protection 或 ruleset：`AUTOMATION_MAIN_WRITE_GATE = NOT READY`
+- 未来创建具有 `contents: write` 的 GitHub Actions 前必须重新审核 branch protection / ruleset，否则不得启用自动写 `main`
+- 未创建 Collector、Pipeline、LLM、Gmail、Git 自动提交、GitHub Actions、真实配置、状态数据或日报实现，未开始 Stage 1.12 A2
+- 未修改 Stage 1.1–1.11 或任何 Eterna `FROZEN` 正文
 
 ### AI 情报自动化系统 Stage 1.11
 
