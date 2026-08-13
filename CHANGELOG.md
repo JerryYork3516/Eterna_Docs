@@ -1,17 +1,30 @@
-# Eterna 文档变更记录 v20
+# Eterna 文档变更记录 v21
 
-内部版本：`v20`
+内部版本：`v21`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-12 22:30`（Asia/Shanghai）
+文档更新时间：`2026-08-13 00:20`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
 
 ---
+
+## 2026-08-13
+
+### AI 情报自动化系统 Stage 1.12 A4
+
+- 新增 Global / China 严格分片的非敏感 Region State，并创建确定性空初始状态文件
+- 实现调用方提供的 Candidate、Evidence、Event 稳定 ID 连续性，以及 first_seen / last_seen 和追加式 status_history 门禁
+- 实现正整数 Revision、Report / Delivery 确定性幂等键、SHA-256 内容冲突保护及 Delivery Status 状态机
+- 实现严格 State dict / JSON 序列化、深度不可变、Region 隔离、正式路径白名单与损坏状态 fail-closed
+- 实现同目录临时文件、flush / fsync / `os.replace` 原子写入，以及 canonical digest 乐观并发 stale-write 防护
+- Python 3.13 Offline 测试共 210 项通过；未新增依赖，未修改 `pyproject.toml` 或 `requirements.lock`
+- 未实现语义 ID 生成、Collector、Normalizer、去重、聚类、分析、报告渲染、Gmail、Git Adapter 或 Workflow，未开始 Stage 1.12 A5
+- Stage 1.1–1.11 与所有 Eterna `FROZEN` 正文均未修改；`AUTOMATION_MAIN_WRITE_GATE` 保持 `NOT READY`
 
 ## 2026-08-12
 
