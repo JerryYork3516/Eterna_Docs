@@ -488,6 +488,103 @@ def test_git_result_is_state_only_and_push_requires_commit() -> None:
         )
 
 
+def test_push_failure_preserves_commit_sha_and_retry_only_pushes() -> None:
+    state = with_report(empty_region_state(Region.GLOBAL))
+    key = state.reports[0].idempotency_key
+    commit_sha = "b" * 40
+
+    state = set_report_git_result(
+        state,
+        idempotency_key=key,
+        status=GitCommitStatus.COMMITTED,
+        commit_sha=commit_sha,
+    )
+    state = set_report_git_result(
+        state,
+        idempotency_key=key,
+        status=GitCommitStatus.PUSH_FAILED,
+        commit_sha=commit_sha,
+    )
+
+    assert state.reports[0].git_status is GitCommitStatus.PUSH_FAILED
+    assert state.reports[0].commit_sha == commit_sha
+    persisted = state_from_json(state_to_json(state), expected_region=Region.GLOBAL)
+    assert persisted.reports[0].git_status is GitCommitStatus.PUSH_FAILED
+    assert persisted.reports[0].commit_sha == commit_sha
+    with pytest.raises(StateConflictError, match="illegal"):
+        set_report_git_result(
+            state,
+            idempotency_key=key,
+            status=GitCommitStatus.COMMITTED,
+            commit_sha=commit_sha,
+        )
+    with pytest.raises(StateConflictError, match="preserve"):
+        set_report_git_result(
+            state,
+            idempotency_key=key,
+            status=GitCommitStatus.PUSHED,
+            commit_sha="c" * 40,
+        )
+
+    state = set_report_git_result(
+        state,
+        idempotency_key=key,
+        status=GitCommitStatus.PUSHED,
+        commit_sha=commit_sha,
+    )
+
+    assert state.reports[0].git_status is GitCommitStatus.PUSHED
+    assert state.reports[0].commit_sha == commit_sha
+    with pytest.raises(StateConflictError, match="terminal|illegal"):
+        set_report_git_result(
+            state,
+            idempotency_key=key,
+            status=GitCommitStatus.PUSH_FAILED,
+            commit_sha=commit_sha,
+        )
+
+
+def test_commit_failure_can_retry_commit_without_sha() -> None:
+    state = with_report(empty_region_state(Region.GLOBAL))
+    key = state.reports[0].idempotency_key
+
+    state = set_report_git_result(
+        state,
+        idempotency_key=key,
+        status=GitCommitStatus.COMMIT_FAILED,
+        commit_sha=None,
+    )
+    assert state.reports[0].commit_sha is None
+
+    state = set_report_git_result(
+        state,
+        idempotency_key=key,
+        status=GitCommitStatus.COMMITTED,
+        commit_sha="d" * 40,
+    )
+    assert state.reports[0].git_status is GitCommitStatus.COMMITTED
+
+
+@pytest.mark.parametrize(
+    ("status", "commit_sha", "match"),
+    [
+        (GitCommitStatus.PUSH_FAILED, None, "require commit_sha"),
+        (GitCommitStatus.COMMIT_FAILED, "e" * 40, "must not carry commit_sha"),
+    ],
+)
+def test_git_failure_status_enforces_commit_sha_contract(
+    status: GitCommitStatus,
+    commit_sha: str | None,
+    match: str,
+) -> None:
+    payload = state_to_dict(with_report(empty_region_state(Region.GLOBAL)))
+    payload["reports"][0]["git_status"] = status.value
+    payload["reports"][0]["commit_sha"] = commit_sha
+
+    with pytest.raises(StateValidationError, match=match):
+        state_from_dict(payload)
+
+
 def test_delivery_key_is_deterministic_and_distinct_from_report_key() -> None:
     delivery_key = delivery_idempotency_key(Region.GLOBAL, REPORT_DATE, 1)
 

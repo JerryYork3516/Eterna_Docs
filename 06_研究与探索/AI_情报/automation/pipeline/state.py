@@ -65,9 +65,10 @@ class DeliveryStatus(str, Enum):
 
 class GitCommitStatus(str, Enum):
     NOT_COMMITTED = "Not committed"
+    COMMIT_FAILED = "Commit failed"
     COMMITTED = "Committed"
+    PUSH_FAILED = "Push failed"
     PUSHED = "Pushed"
-    GIT_FAILED = "Git failed"
 
 
 def _text(value: object, field_name: str, *, max_length: int = 8192) -> str:
@@ -274,11 +275,19 @@ class ReportStateRecord:
             or _GIT_SHA_PATTERN.fullmatch(self.commit_sha) is None
         ):
             raise StateValidationError("commit_sha must be a lowercase 40-character Git SHA")
-        if self.git_status in {GitCommitStatus.COMMITTED, GitCommitStatus.PUSHED}:
+        if self.git_status in {
+            GitCommitStatus.COMMITTED,
+            GitCommitStatus.PUSH_FAILED,
+            GitCommitStatus.PUSHED,
+        }:
             if self.commit_sha is None:
-                raise StateValidationError("committed or pushed reports require commit_sha")
+                raise StateValidationError(
+                    "committed, push-failed, or pushed reports require commit_sha"
+                )
         elif self.commit_sha is not None:
-            raise StateValidationError("uncommitted or failed reports must not carry commit_sha")
+            raise StateValidationError(
+                "not-committed or commit-failed reports must not carry commit_sha"
+            )
         if self.idempotency_key != report_idempotency_key(
             self.region, self.report_date, self.revision
         ):
@@ -606,14 +615,13 @@ def set_report_git_result(
     _enum(status, GitCommitStatus, "status")
     transitions = {
         GitCommitStatus.NOT_COMMITTED: frozenset(
-            {GitCommitStatus.COMMITTED, GitCommitStatus.GIT_FAILED}
+            {GitCommitStatus.COMMIT_FAILED, GitCommitStatus.COMMITTED}
         ),
-        GitCommitStatus.GIT_FAILED: frozenset(
-            {GitCommitStatus.COMMITTED, GitCommitStatus.GIT_FAILED}
-        ),
+        GitCommitStatus.COMMIT_FAILED: frozenset({GitCommitStatus.COMMITTED}),
         GitCommitStatus.COMMITTED: frozenset(
-            {GitCommitStatus.PUSHED, GitCommitStatus.GIT_FAILED}
+            {GitCommitStatus.PUSH_FAILED, GitCommitStatus.PUSHED}
         ),
+        GitCommitStatus.PUSH_FAILED: frozenset({GitCommitStatus.PUSHED}),
         GitCommitStatus.PUSHED: frozenset(),
     }
     if status is existing.git_status and commit_sha == existing.commit_sha:
@@ -622,6 +630,8 @@ def set_report_git_result(
         raise StateConflictError(
             f"illegal Git state transition: {existing.git_status.value} -> {status.value}"
         )
+    if existing.commit_sha is not None and commit_sha != existing.commit_sha:
+        raise StateConflictError("Git state transition must preserve the recorded commit_sha")
     updated = replace(existing, git_status=status, commit_sha=commit_sha)
     return replace(state, reports=_replace_record(state.reports, existing, updated))
 

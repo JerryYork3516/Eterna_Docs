@@ -1,17 +1,26 @@
-# Eterna 文档变更记录 v21
+# Eterna 文档变更记录 v22
 
-内部版本：`v21`
+内部版本：`v22`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-13 00:20`（Asia/Shanghai）
+文档更新时间：`2026-08-14 00:00`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
 
 ---
+
+## 2026-08-14
+
+### AI 情报自动化系统 Stage 1.12 A4 Fix
+
+- 将 Git 失败状态拆分为 `Commit failed` 与 `Push failed`，使 commit 成功后的 push 失败保留原 commit SHA
+- 限定 `Push failed` 只能使用原 SHA 重试至 `Pushed`，并禁止回退、重新 commit 或改写 SHA
+- 补充 commit 失败恢复、push 失败恢复、SHA 完整性与终态门禁的 Offline 测试
+- 未修改任何 `FROZEN` 文档，未开始 Stage 1.12 A5
 
 ## 2026-08-13
 
