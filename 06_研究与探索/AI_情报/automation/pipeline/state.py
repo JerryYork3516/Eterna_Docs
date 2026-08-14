@@ -15,7 +15,7 @@ from typing import TypeVar
 from urllib.parse import urlsplit
 
 from pipeline.errors import AutomationError
-from pipeline.models import InformationStatus, Region, StatusHistoryEntry
+from pipeline.models import EvidenceRelation, InformationStatus, Region, StatusHistoryEntry
 from pipeline.path_policy import PathPolicyError, validate_write_path
 
 
@@ -202,6 +202,10 @@ class CandidateStateRecord:
 class EvidenceStateRecord:
     evidence_id: str
     candidate_references: tuple[str, ...]
+    relation: EvidenceRelation = EvidenceRelation.SUPPORTS
+    independent_confirmation: bool = True
+    duplicate_of_evidence_id: str | None = None
+    content_signature: str | None = None
 
     def __post_init__(self) -> None:
         _text(self.evidence_id, "evidence_id", max_length=512)
@@ -210,14 +214,33 @@ class EvidenceStateRecord:
             "candidate_references",
             _references(self.candidate_references, "candidate_references", nonempty=True),
         )
+        _enum(self.relation, EvidenceRelation, "relation")
+        if type(self.independent_confirmation) is not bool:
+            raise StateValidationError("independent_confirmation must be a boolean")
+        _optional_text(
+            self.duplicate_of_evidence_id,
+            "duplicate_of_evidence_id",
+            max_length=512,
+        )
+        if self.independent_confirmation and self.duplicate_of_evidence_id is not None:
+            raise StateValidationError(
+                "independent Evidence must not reference a duplicate Evidence"
+            )
+        if not self.independent_confirmation and self.duplicate_of_evidence_id is None:
+            raise StateValidationError(
+                "non-independent Evidence requires duplicate_of_evidence_id"
+            )
+        if self.duplicate_of_evidence_id == self.evidence_id:
+            raise StateValidationError("Evidence must not be a duplicate of itself")
+        _optional_sha256(self.content_signature, "content_signature")
 
 
 @dataclass(frozen=True, slots=True)
 class EventStateRecord:
     event_id: str
     evidence_references: tuple[str, ...]
-    initial_status: InformationStatus
-    information_status: InformationStatus
+    initial_status: InformationStatus | None
+    information_status: InformationStatus | None
     status_history: tuple[StatusHistoryEntry, ...]
 
     def __post_init__(self) -> None:
@@ -227,9 +250,16 @@ class EventStateRecord:
             "evidence_references",
             _references(self.evidence_references, "evidence_references", nonempty=True),
         )
-        _enum(self.initial_status, InformationStatus, "initial_status")
-        _enum(self.information_status, InformationStatus, "information_status")
+        if (self.initial_status is None) is not (self.information_status is None):
+            raise StateValidationError(
+                "Event analysis status must be entirely absent or entirely present"
+            )
+        if self.initial_status is not None:
+            _enum(self.initial_status, InformationStatus, "initial_status")
+            _enum(self.information_status, InformationStatus, "information_status")
         history = _items(self.status_history, StatusHistoryEntry, "status_history")
+        if self.initial_status is None and history:
+            raise StateValidationError("pre-analysis Event must not have status_history")
         for index, entry in enumerate(history):
             _aware_datetime(entry.changed_at, f"status_history[{index}].changed_at")
             _text(entry.reason, f"status_history[{index}].reason")
@@ -366,11 +396,28 @@ class RegionState:
             raise StateValidationError("Evidence state references an unknown candidate_id")
         evidence_ids = {record.evidence_id for record in evidences}
         if any(
+            evidence.duplicate_of_evidence_id not in evidence_ids
+            for evidence in evidences
+            if evidence.duplicate_of_evidence_id is not None
+        ):
+            raise StateValidationError("Evidence duplicate references an unknown evidence_id")
+        if any(
             reference not in evidence_ids
             for event in events
             for reference in event.evidence_references
         ):
             raise StateValidationError("Event state references an unknown evidence_id")
+        evidence_by_id = {record.evidence_id: record for record in evidences}
+        if any(
+            evidence_by_id[reference].duplicate_of_evidence_id
+            not in event.evidence_references
+            for event in events
+            for reference in event.evidence_references
+            if evidence_by_id[reference].duplicate_of_evidence_id is not None
+        ):
+            raise StateValidationError(
+                "Near Duplicate Evidence and its primary must remain in the same Event"
+            )
         report_keys = {record.idempotency_key for record in reports}
         if any(
             report_idempotency_key(record.region, record.report_date, record.revision)
@@ -510,12 +557,23 @@ def register_evidence_reference(
     *,
     evidence_id: str,
     candidate_references: object,
+    relation: EvidenceRelation = EvidenceRelation.SUPPORTS,
+    independent_confirmation: bool = True,
+    duplicate_of_evidence_id: str | None = None,
+    content_signature: str | None = None,
 ) -> RegionState:
-    proposed = EvidenceStateRecord(evidence_id, candidate_references)
+    proposed = EvidenceStateRecord(
+        evidence_id=evidence_id,
+        candidate_references=candidate_references,
+        relation=relation,
+        independent_confirmation=independent_confirmation,
+        duplicate_of_evidence_id=duplicate_of_evidence_id,
+        content_signature=content_signature,
+    )
     existing = next((item for item in state.evidences if item.evidence_id == evidence_id), None)
     if existing is not None:
-        if existing.candidate_references != proposed.candidate_references:
-            raise StateConflictError("evidence_id would be rebound to different candidates")
+        if existing != proposed:
+            raise StateConflictError("evidence_id would be rebound to different Evidence state")
         return state
     return replace(state, evidences=state.evidences + (proposed,))
 
@@ -525,7 +583,7 @@ def register_event_state(
     *,
     event_id: str,
     evidence_references: object,
-    information_status: InformationStatus,
+    information_status: InformationStatus | None = None,
 ) -> RegionState:
     proposed = EventStateRecord(
         event_id=event_id,
@@ -572,6 +630,8 @@ def append_event_status(
         raise StateConflictError("event_id is not registered")
     if type(entry) is not StatusHistoryEntry:
         raise StateValidationError("entry must be a StatusHistoryEntry")
+    if existing.information_status is None:
+        raise StateConflictError("pre-analysis Event has no status to transition")
     if entry.previous_status is not existing.information_status:
         raise StateConflictError("previous_status does not match current Event status")
     if existing.status_history and entry.changed_at < existing.status_history[-1].changed_at:
@@ -737,7 +797,14 @@ _CANDIDATE_FIELDS = (
     "first_seen_at",
     "last_seen_at",
 )
-_EVIDENCE_FIELDS = ("evidence_id", "candidate_references")
+_EVIDENCE_FIELDS = (
+    "evidence_id",
+    "candidate_references",
+    "relation",
+    "independent_confirmation",
+    "duplicate_of_evidence_id",
+    "content_signature",
+)
 _EVENT_FIELDS = (
     "event_id",
     "evidence_references",
@@ -804,6 +871,10 @@ def state_to_dict(state: RegionState) -> dict[str, object]:
             {
                 "evidence_id": item.evidence_id,
                 "candidate_references": list(item.candidate_references),
+                "relation": item.relation.value,
+                "independent_confirmation": item.independent_confirmation,
+                "duplicate_of_evidence_id": item.duplicate_of_evidence_id,
+                "content_signature": item.content_signature,
             }
             for item in state.evidences
         ],
@@ -811,8 +882,14 @@ def state_to_dict(state: RegionState) -> dict[str, object]:
             {
                 "event_id": item.event_id,
                 "evidence_references": list(item.evidence_references),
-                "initial_status": item.initial_status.value,
-                "information_status": item.information_status.value,
+                "initial_status": (
+                    item.initial_status.value if item.initial_status is not None else None
+                ),
+                "information_status": (
+                    item.information_status.value
+                    if item.information_status is not None
+                    else None
+                ),
                 "status_history": [_history_to_dict(entry) for entry in item.status_history],
             }
             for item in state.events
@@ -949,6 +1026,10 @@ def state_from_dict(value: object, *, expected_region: Region | None = None) -> 
                 candidate_references=_parse_string_array(
                     item["candidate_references"], "candidate_references"
                 ),
+                relation=_parse_enum(item["relation"], EvidenceRelation, "relation"),
+                independent_confirmation=item["independent_confirmation"],
+                duplicate_of_evidence_id=item["duplicate_of_evidence_id"],
+                content_signature=item["content_signature"],
             )
         )
     events = []
@@ -960,11 +1041,21 @@ def state_from_dict(value: object, *, expected_region: Region | None = None) -> 
                 evidence_references=_parse_string_array(
                     item["evidence_references"], "evidence_references"
                 ),
-                initial_status=_parse_enum(
-                    item["initial_status"], InformationStatus, "initial_status"
+                initial_status=(
+                    None
+                    if item["initial_status"] is None
+                    else _parse_enum(
+                        item["initial_status"], InformationStatus, "initial_status"
+                    )
                 ),
-                information_status=_parse_enum(
-                    item["information_status"], InformationStatus, "information_status"
+                information_status=(
+                    None
+                    if item["information_status"] is None
+                    else _parse_enum(
+                        item["information_status"],
+                        InformationStatus,
+                        "information_status",
+                    )
                 ),
                 status_history=tuple(
                     _history_from_dict(entry)
