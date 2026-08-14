@@ -474,17 +474,34 @@ def register_candidate_observation(
     stable_fields = (
         "candidate_id",
         "source_reference",
-        "canonical_url",
         "source_object_id",
-        "content_fingerprint",
     )
     if any(getattr(existing, field) != getattr(proposed, field) for field in stable_fields):
         raise StateConflictError("candidate observation would rebind stable identity")
+    if existing.source_object_id is None and existing.canonical_url != canonical_url:
+        raise StateConflictError("candidate observation would rebind stable identity")
+    if (
+        existing.source_object_id is not None
+        and existing.canonical_url is not None
+        and canonical_url is not None
+        and urlsplit(existing.canonical_url).hostname
+        != urlsplit(canonical_url).hostname
+    ):
+        raise StateConflictError("candidate observation cannot move across source hosts")
     if observed_at < existing.last_seen_at:
         raise StateConflictError("candidate last_seen_at must not regress")
-    if observed_at == existing.last_seen_at:
+    if (
+        observed_at == existing.last_seen_at
+        and canonical_url == existing.canonical_url
+        and content_fingerprint == existing.content_fingerprint
+    ):
         return state
-    updated = replace(existing, last_seen_at=observed_at)
+    updated = replace(
+        existing,
+        canonical_url=canonical_url,
+        content_fingerprint=content_fingerprint,
+        last_seen_at=observed_at,
+    )
     return replace(state, candidates=_replace_record(state.candidates, existing, updated))
 
 

@@ -11,8 +11,33 @@ from typing import Mapping
 from pipeline.errors import AutomationError
 
 
-_REQUIRED_HEADERS = ("Source", "Type", "Region", "Platform / URL")
+_REQUIRED_HEADERS = (
+    "Source",
+    "Type",
+    "Region",
+    "Platform / URL",
+    "Priority",
+    "Credibility",
+    "Fact Citation",
+    "Eterna Tags",
+)
 _SUPPORTED_REGIONS = frozenset({"Global", "China"})
+_SUPPORTED_SOURCE_TYPES = frozenset({"Official", "Person", "Community", "Media"})
+_SUPPORTED_PRIORITIES = frozenset({"P0", "P1", "P2", "P3"})
+_SUPPORTED_CREDIBILITY = frozenset({"High", "Medium", "Low"})
+_SUPPORTED_FACT_CITATION = frozenset({"Yes", "Conditional", "No"})
+_KNOWN_ETERNA_TAGS = (
+    "Business / Ecosystem",
+    "Digital Resident",
+    "Voice / STS",
+    "Studio Next",
+    "Runtime Core",
+    "Multimodal",
+    "AI Coding",
+    "Aftelle",
+    "ECCS",
+    "Agent",
+)
 _MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\((https?://[^)]+)\)")
 _SEPARATOR_CELL = re.compile(r":?-{3,}:?")
 
@@ -23,13 +48,17 @@ class RegistryValidationError(AutomationError):
 
 @dataclass(frozen=True, slots=True)
 class RegistryEntry:
-    """Minimum Source Registry fields needed by runtime config validation."""
+    """Runtime projection of the frozen Source Registry fields."""
 
     name: str
     source_type: str
     region: str
     platform: str
     urls: tuple[str, ...]
+    priority: str
+    credibility: str
+    fact_citation: str
+    eterna_tags: tuple[str, ...]
 
 
 @dataclass(frozen=True, slots=True)
@@ -53,6 +82,25 @@ def _split_table_row(line: str) -> tuple[str, ...]:
 
 def _is_separator_row(cells: tuple[str, ...]) -> bool:
     return bool(cells) and all(_SEPARATOR_CELL.fullmatch(cell) for cell in cells)
+
+
+def _parse_eterna_tags(value: str) -> tuple[str, ...]:
+    """Split the Registry cell while preserving tags that contain `` / ``."""
+
+    protected = value
+    placeholders: dict[str, str] = {}
+    for index, tag in enumerate(_KNOWN_ETERNA_TAGS):
+        placeholder = f"__ETERNA_TAG_{index}__"
+        protected = protected.replace(tag, placeholder)
+        placeholders[placeholder] = tag
+    tags = tuple(
+        placeholders.get(item.strip(), item.strip())
+        for item in protected.split(" / ")
+        if item.strip()
+    )
+    if not tags or len(set(tags)) != len(tags):
+        raise RegistryValidationError("Source Registry row has invalid Eterna Tags")
+    return tags
 
 
 def load_source_registry(path: Path) -> SourceRegistry:
@@ -91,12 +139,32 @@ def load_source_registry(path: Path) -> SourceRegistry:
         source_type = row["Type"]
         region = row["Region"]
         platform = row["Platform / URL"]
+        priority = row["Priority"]
+        credibility = row["Credibility"]
+        fact_citation = row["Fact Citation"]
+        eterna_tags = _parse_eterna_tags(row["Eterna Tags"])
 
         if not name or not source_type or not platform:
             raise RegistryValidationError("Source Registry row has empty required fields")
+        if source_type not in _SUPPORTED_SOURCE_TYPES:
+            raise RegistryValidationError(
+                f"Source Registry row has unsupported Type: {source_type!r}"
+            )
         if region not in _SUPPORTED_REGIONS:
             raise RegistryValidationError(
                 f"Source Registry row has unsupported Region: {region!r}"
+            )
+        if priority not in _SUPPORTED_PRIORITIES:
+            raise RegistryValidationError(
+                f"Source Registry row has unsupported Priority: {priority!r}"
+            )
+        if credibility not in _SUPPORTED_CREDIBILITY:
+            raise RegistryValidationError(
+                f"Source Registry row has unsupported Credibility: {credibility!r}"
+            )
+        if fact_citation not in _SUPPORTED_FACT_CITATION:
+            raise RegistryValidationError(
+                f"Source Registry row has unsupported Fact Citation: {fact_citation!r}"
             )
         if name in entries:
             raise RegistryValidationError(
@@ -109,6 +177,10 @@ def load_source_registry(path: Path) -> SourceRegistry:
             region=region,
             platform=platform,
             urls=tuple(_MARKDOWN_LINK.findall(platform)),
+            priority=priority,
+            credibility=credibility,
+            fact_citation=fact_citation,
+            eterna_tags=eterna_tags,
         )
 
     if not entries:

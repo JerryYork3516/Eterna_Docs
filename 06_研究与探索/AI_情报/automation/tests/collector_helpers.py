@@ -61,6 +61,10 @@ def configured_source(
                     region=region,
                     platform="Synthetic public test source",
                     urls=(url,),
+                    priority="P0" if source_type == "Official" else "P2",
+                    credibility="High" if source_type == "Official" else "Medium",
+                    fact_citation="Yes" if source_type == "Official" else "Conditional",
+                    eterna_tags=("Agent", "AI Coding"),
                 )
             }
         )

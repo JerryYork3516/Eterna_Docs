@@ -54,6 +54,16 @@ def test_current_china_config_resolves_to_registry(registry) -> None:
     )
 
 
+def test_registry_runtime_projection_includes_frozen_candidate_fields(registry) -> None:
+    source = registry.get("OpenAI")
+
+    assert source.source_type == "Official"
+    assert source.priority == "P0"
+    assert source.credibility == "High"
+    assert source.fact_citation == "Yes"
+    assert "Business / Ecosystem" in source.eterna_tags
+
+
 def test_registry_is_not_modified_by_validation(registry) -> None:
     before = hashlib.sha256(REGISTRY_PATH.read_bytes()).hexdigest()
 

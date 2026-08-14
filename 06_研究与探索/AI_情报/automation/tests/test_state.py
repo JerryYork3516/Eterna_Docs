@@ -227,6 +227,51 @@ def test_repeated_candidate_observation_preserves_first_seen_and_advances_last_s
     assert state.candidates[0].last_seen_at == later
 
 
+def test_repeated_candidate_observation_updates_content_fingerprint_without_rebinding() -> None:
+    state = with_candidate(empty_region_state(Region.GLOBAL))
+    changed_fingerprint = "b" * 64
+    state = register_candidate_observation(
+        state,
+        observation_key="provided-observation-1",
+        candidate_id="provided-candidate-1",
+        source_reference="Synthetic Official Source",
+        observed_at=NOW + timedelta(minutes=1),
+        canonical_url="https://example.invalid/public/1",
+        content_fingerprint=changed_fingerprint,
+    )
+
+    assert state.candidates[0].candidate_id == "provided-candidate-1"
+    assert state.candidates[0].content_fingerprint == changed_fingerprint
+    assert state.candidates[0].first_seen_at == NOW
+    assert state.candidates[0].last_seen_at == NOW + timedelta(minutes=1)
+
+
+def test_object_identity_allows_canonical_url_update_without_new_candidate() -> None:
+    state = register_candidate_observation(
+        empty_region_state(Region.GLOBAL),
+        observation_key="provided-object-observation",
+        candidate_id="provided-object-candidate",
+        source_reference="Synthetic Official Source",
+        observed_at=NOW,
+        canonical_url="https://example.invalid/public/old",
+        source_object_id="object-1",
+        content_fingerprint="a" * 64,
+    )
+    state = register_candidate_observation(
+        state,
+        observation_key="provided-object-observation",
+        candidate_id="provided-object-candidate",
+        source_reference="Synthetic Official Source",
+        observed_at=NOW + timedelta(minutes=1),
+        canonical_url="https://example.invalid/public/new",
+        source_object_id="object-1",
+        content_fingerprint="b" * 64,
+    )
+
+    assert len(state.candidates) == 1
+    assert state.candidates[0].canonical_url.endswith("/new")
+
+
 def test_candidate_last_seen_regression_fails() -> None:
     state = with_candidate(empty_region_state(Region.GLOBAL))
 
