@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v22
+# Eterna 文档变更记录 v23
 
-内部版本：`v22`
+内部版本：`v23`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-14 00:00`（Asia/Shanghai）
+文档更新时间：`2026-08-14 13:36`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,16 @@
 ---
 
 ## 2026-08-14
+
+### AI 情报自动化系统 Stage 1.12 A5
+
+- 实现统一公开 HTTP Transport，固定 User-Agent、四类 timeout、响应体、重定向、请求次数、Content-Type、HTTP 状态与 Rate Limit 安全边界
+- 实现不可变 Raw Collector Record 与来源/条目级失败分类，不生成 CandidateItem 或分析字段
+- 实现 Native RSS / Atom、GitHub 官方公开 REST API、Hugging Face 官方公开 API 与有限静态 Public Web Adapter
+- 实现 Config + Source Registry 重新校验、enabled 和 Region 门禁，未知 Adapter 默认拒绝
+- 新增完全合成、无 Secret、无真实网络的 Transport 与 Collector 测试；Python 3.13 Offline 测试共 256 项通过
+- 未新增依赖，未修改 `pyproject.toml` / `requirements.lock`，未实现 Normalizer、Dedup、Analysis、LLM、Report、Gmail、Git Adapter 或 Workflow
+- Stage 1.1–1.11 与所有 Eterna `FROZEN` 正文均未修改；`AUTOMATION_MAIN_WRITE_GATE` 保持 `NOT READY`，未开始 Stage 1.12 A6
 
 ### AI 情报自动化系统 Stage 1.12 A4 Fix
 
