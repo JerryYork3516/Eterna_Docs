@@ -94,6 +94,7 @@ def descriptor(**overrides: object) -> EventDescriptor:
         "subject": "Synthetic Official",
         "action": "released",
         "object_name": "Synthetic Model",
+        "event_anchor": "synthetic-model-v1-release-2026-08-14",
         "version": "v1",
         "technical_categories": (TechnicalCategory.MODEL,),
     }
@@ -277,6 +278,7 @@ def test_same_structured_event_clusters_different_evidence() -> None:
     )
 
     assert len(result.event_drafts) == 1
+    assert result.event_drafts[0].event_anchor == descriptor().event_anchor
     assert len(result.event_drafts[0].evidence_references) == 2
     assert len(result.event_drafts[0].independent_evidence_references) == 2
     assert result.event_drafts[0].technical_categories == (TechnicalCategory.MODEL,)
@@ -284,6 +286,88 @@ def test_same_structured_event_clusters_different_evidence() -> None:
         EternaTag.AGENT,
         EternaTag.AI_CODING,
     }
+
+
+def test_same_descriptor_and_anchor_produce_same_event() -> None:
+    first = candidate("1")
+    second = candidate(
+        "2",
+        title="Independent release evidence",
+        source_excerpt="A second public source describes the release.",
+    )
+    shared = descriptor(event_anchor="release-instance-2026-08-14")
+    result = cluster_candidates(
+        [ClusterInput(first, shared), ClusterInput(second, shared)],
+        state=state_with(first, second),
+    )
+
+    assert stable_event_id(first, shared) == stable_event_id(second, shared)
+    assert len(result.event_drafts) == 1
+    assert result.event_drafts[0].event_anchor == "release-instance-2026-08-14"
+    assert len(result.event_drafts[0].independent_evidence_references) == 2
+
+
+def test_same_descriptor_with_different_anchor_produces_different_event() -> None:
+    first = candidate("1")
+    second = candidate(
+        "2",
+        title="Later independent release evidence",
+        source_excerpt="A later public source describes another release instance.",
+    )
+    first_descriptor = descriptor(event_anchor="release-instance-2026-08-14")
+    second_descriptor = descriptor(event_anchor="release-instance-2026-09-14")
+    result = cluster_candidates(
+        [
+            ClusterInput(first, first_descriptor),
+            ClusterInput(second, second_descriptor),
+        ],
+        state=state_with(first, second),
+    )
+
+    assert stable_event_id(first, first_descriptor) != stable_event_id(
+        second, second_descriptor
+    )
+    assert len(result.event_drafts) == 2
+
+
+def test_distant_same_descriptor_requires_distinct_explicit_anchor() -> None:
+    first = candidate("1")
+    later = candidate(
+        "later",
+        source_published_at=NOW + timedelta(days=180),
+        collected_at=NOW + timedelta(days=180),
+        first_seen_at=NOW + timedelta(days=180),
+        last_seen_at=NOW + timedelta(days=180),
+        title="Same product released in a later event",
+        source_excerpt="A separate later release instance.",
+    )
+    earlier_descriptor = descriptor(event_anchor="release-instance-2026-08-14")
+    later_descriptor = descriptor(event_anchor="release-instance-2027-02-10")
+    result = cluster_candidates(
+        [
+            ClusterInput(first, earlier_descriptor),
+            ClusterInput(later, later_descriptor),
+        ],
+        state=state_with(first, later),
+    )
+
+    assert len(result.event_drafts) == 2
+    assert {draft.event_anchor for draft in result.event_drafts} == {
+        "release-instance-2026-08-14",
+        "release-instance-2027-02-10",
+    }
+
+
+def test_structured_descriptor_without_anchor_fails_closed() -> None:
+    with pytest.raises(TypeError, match="event_anchor"):
+        EventDescriptor(
+            subject="Synthetic Official",
+            action="released",
+            object_name="Synthetic Model",
+        )  # type: ignore[call-arg]
+
+    with pytest.raises(ClusteringError, match="event_anchor"):
+        descriptor(event_anchor="")
 
 
 @pytest.mark.parametrize(
@@ -406,7 +490,9 @@ def test_supporting_and_contradicting_evidence_coexist_without_final_status() ->
         EvidenceRelation.SUPPORTS,
         EvidenceRelation.CONTRADICTS,
     }
+    assert len(result.event_drafts) == 1
     draft = result.event_drafts[0]
+    assert draft.event_anchor == descriptor().event_anchor
     assert not hasattr(draft, "information_status")
     assert not hasattr(draft, "current_confidence")
     assert not hasattr(draft, "importance")

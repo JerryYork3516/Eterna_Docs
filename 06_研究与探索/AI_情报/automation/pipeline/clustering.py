@@ -66,6 +66,7 @@ class EventDescriptor:
     subject: str
     action: str
     object_name: str
+    event_anchor: str
     version: str | None = None
     technical_categories: tuple[TechnicalCategory, ...] = ()
 
@@ -73,6 +74,7 @@ class EventDescriptor:
         _text(self.subject, "subject")
         _text(self.action, "action")
         _text(self.object_name, "object_name")
+        _text(self.event_anchor, "event_anchor", maximum=512)
         if self.version is not None:
             _text(self.version, "version")
         if type(self.technical_categories) is not tuple or any(
@@ -134,6 +136,7 @@ class EventDraft:
     event_id: str
     canonical_title: str
     region: Region
+    event_anchor: str | None
     technical_categories: tuple[TechnicalCategory, ...]
     first_seen_at: datetime
     last_seen_at: datetime
@@ -146,6 +149,8 @@ class EventDraft:
         _text(self.canonical_title, "canonical_title")
         if type(self.region) is not Region:
             raise ClusteringError("region must be a Region")
+        if self.event_anchor is not None:
+            _text(self.event_anchor, "event_anchor", maximum=512)
         if type(self.technical_categories) is not tuple or any(
             type(item) is not TechnicalCategory for item in self.technical_categories
         ):
@@ -221,6 +226,7 @@ def _event_material(
             "version": (
                 _normalized_text(descriptor.version) if descriptor.version is not None else None
             ),
+            "event_anchor": descriptor.event_anchor,
         }
     signature = near_duplicate_signature(candidate)
     if signature is not None:
@@ -548,6 +554,11 @@ def cluster_candidates(
                 event_id=event_id,
                 canonical_title=canonical_title,
                 region=state.region,
+                event_anchor=(
+                    event_descriptors[event_id][0].event_anchor
+                    if event_descriptors.get(event_id)
+                    else None
+                ),
                 technical_categories=tuple(categories),
                 first_seen_at=min(candidate.first_seen_at for candidate in candidates),
                 last_seen_at=max(candidate.last_seen_at for candidate in candidates),
