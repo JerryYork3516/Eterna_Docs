@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v29
+# Eterna 文档变更记录 v30
 
-内部版本：`v29`
+内部版本：`v30`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 22:08`（Asia/Shanghai）
+文档更新时间：`2026-08-15 22:44`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,15 @@
 ---
 
 ## 2026-08-15
+
+### AI 情报自动化系统 Stage 1.12 A11 Fix
+
+- 将 `AGENTS.md` 更新为 v2，新增仅适用于 `06_研究与探索/每日AI资讯/**` 的自动生成研究运行产物例外
+- 明确目录首次建立、结构变化或治理规则变化时由人工治理同步更新根索引、研究索引与 CHANGELOG；每日新增日报和同日报 Revision 不做逐文件登记
+- Automation 仍只能提交当前 Region、当前日期与 Revision 的一个 AI News 日报，并继续禁止修改根 `INDEX.md`、`06_研究与探索/INDEX.md` 与 `CHANGELOG.md`
+- 其他正式文档的索引与变更记录规则保持不变；例外未扩大到 `06_研究与探索` 的其他文件或目录
+- `AUTOMATION_AI_NEWS_WRITE_GATE = READY` 与 `AUTOMATION_MAIN_WRITE_GATE = NOT READY` 保持不变
+- 本轮未修改 A11 Amendment、Stage 1.1–1.11 `FROZEN`、Path Policy、日报路径、分支或 Gmail 规则；未运行真实 AI News、Automation 或邮件投递
 
 ### AI 情报自动化系统 Stage 1.12 A11
 

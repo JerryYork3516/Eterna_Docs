@@ -1,12 +1,12 @@
-# Codex AI Intelligence · Automation Safety Gate · Stage 1.12 A10/A11 · v0.2
+# Codex AI Intelligence · Automation Safety Gate · Stage 1.12 A10/A11 · v0.3
 
-内部版本：`v0.2`
+内部版本：`v0.3`
 
 文档性质：Codex Automation 无人值守安全与副作用门禁
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 22:08`（Asia/Shanghai）
+文档更新时间：`2026-08-15 22:44`（Asia/Shanghai）
 
 > A11 将 Current Personal MVP 从 Observe-only 升级为受限 `UNATTENDED_WRITE`。
 > 授权只覆盖 `AI_News` 上的单一 Region 日报与成功 push 后的 Gmail 摘要；本次治理变更不运行真实任务或发送邮件。
@@ -57,6 +57,8 @@ China:  06_研究与探索/每日AI资讯/YYYY-MM-DD_China_AI_News.md
 
 - 每次只允许当前 Region、当前业务日期、当前 Revision 的一个正式日报文件。
 - Global 不能写 China 文件，China 不能写 Global 文件。
+- 每日 AI News 属于 `AGENTS.md` 明确批准的自动生成研究运行产物例外；每日新增日报或同日报 Revision 不要求逐文件更新索引或变更记录。
+- Automation 仍只能写上述一个当日日报，且不得主动修改根 `INDEX.md`、`06_研究与探索/INDEX.md` 或 `CHANGELOG.md`。
 - 第一份真实日报写入时才按需创建 `每日AI资讯` 目录，不预建空目录。
 - 旧 `06_研究与探索/AI_情报/reports/**` 只保留历史，不是当前写入目标。
 
@@ -64,7 +66,7 @@ China:  06_研究与探索/每日AI资讯/YYYY-MM-DD_China_AI_News.md
 
 - push、checkout、merge 或修改 `main`；
 - force push、改写历史或创建其他分支；
-- 修改 Stage 1.1–1.11 `FROZEN`、INDEX、CHANGELOG、AGENTS、配置或规则；
+- 修改 Stage 1.1–1.11 `FROZEN`、根 `INDEX.md`、`06_研究与探索/INDEX.md`、`CHANGELOG.md`、`AGENTS.md`、配置或规则；
 - 写 `automation/state/**` 或日报之外的任何文件；
 - 删除或迁移旧 `reports/**` 历史；
 - 暂存、提交、覆盖或清理人工修改；
