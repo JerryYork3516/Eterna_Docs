@@ -1,12 +1,12 @@
-# Eterna 研究与探索 分类索引 v13
+# Eterna 研究与探索 分类索引 v14
 
-内部版本：`v13`
+内部版本：`v14`
 
 文档性质：Eterna 研究与探索分类索引
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 12:36`（Asia/Shanghai）
+文档更新时间：`2026-08-15 14:59`（Asia/Shanghai）
 
 > 收录尚未进入正式产品与架构体系的研究材料和探索性结论。
 > 本目录内容默认不构成产品承诺或正式工程契约。
@@ -34,6 +34,7 @@
 - [AI 情报自动化系统 Stage 1.9 Gmail Delivery Spec](AI_情报/Stage1/Gmail_Delivery_Spec_v0.1.md)（FROZEN，邮件摘要与投递规范）
 - [AI 情报自动化系统 Stage 1.10 Automation Scheduling and Git Spec](AI_情报/Stage1/Automation_Scheduling_and_Git_Spec_v0.1.md)（FROZEN，GitHub Actions、调度与自动提交规范）
 - [AI 情报自动化系统 Stage 1.11 Implementation Plan and Dependency Freeze](AI_情报/Stage1/Implementation_Plan_and_Dependency_Freeze_v0.1.md)（FROZEN，实现方案与依赖冻结规范）
+- [AI 情报自动化系统 Stage 1.12 Personal MVP Route Amendment](AI_情报/Stage1/Stage_1.12_Personal_MVP_Route_Amendment_v0.1.md)（FROZEN，当前个人 MVP 执行路线修正；Stage 1.10 / 1.11 Future Production Route 保留）
 - [Codex AI Intelligence 运行规范入口](AI_情报/automation/codex/README.md)（ACTIVE，Stage 1.12 A8 规范入口）
 - [Codex AI Intelligence Shared Skill](AI_情报/automation/codex/AI_Intelligence_Skill.md)（ACTIVE，共用研究执行规范）
 - [Global AI Intelligence Codex Task](AI_情报/automation/codex/Global_Task.md)（ACTIVE，Global 独立任务规范）

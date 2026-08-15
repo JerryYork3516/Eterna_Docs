@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v24
+# Eterna 文档变更记录 v25
 
-内部版本：`v24`
+内部版本：`v25`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 12:36`（Asia/Shanghai）
+文档更新时间：`2026-08-15 14:59`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,18 @@
 ---
 
 ## 2026-08-15
+
+### AI 情报自动化系统 Stage 1.12 A8 Fix
+
+- 新增 `FROZEN` Personal MVP Route Amendment，以追加式治理正式消解 Stage 1.10 / 1.11 与 A8 Codex Route 的当前执行冲突
+- Current Personal MVP 调度平台改为 Codex Automation；Global `08:00`、China `20:00`、Region 隔离、报告 → Git → Gmail、幂等、失败重试和安全规则继续有效
+- 当前个人路线不再要求 OpenAI API `LLMProvider`、Responses API Adapter、API credential 或 Stage 1.11 原 A8–A17 强制顺序
+- Stage 1.10 / 1.11 的 GitHub Actions、Python Pipeline 与 `LLMProvider` 方案作为 Future Production Route 完整保留，现有 `openai` dependency 与 lockfile 未修改
+- 修正 Shared Skill、README、Global Task 与 China Task 的 Amendment 链接、读取顺序和权威优先级；未覆盖事项仍以 Stage 1.1–1.11 `FROZEN` 为准
+- 未修改 Stage 1.1–1.11 `FROZEN` 历史正文或 A1–A7，未创建 Codex Automation、Workflow、API、Secret、真实日报或 Gmail 投递，未开始 Stage 1.12 A9
+- `AUTOMATION_MAIN_WRITE_GATE` 保持 `NOT READY`，同步更新根索引与研究与探索分类索引
+
+---
 
 ### AI 情报自动化系统 Stage 1.12 A8
 

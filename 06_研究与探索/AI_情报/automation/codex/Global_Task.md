@@ -1,12 +1,12 @@
-# Global AI Intelligence · Codex Task Specification · v0.1
+# Global AI Intelligence · Codex Task Specification · v0.2
 
-内部版本：`v0.1`
+内部版本：`v0.2`
 
 文档性质：Stage 1.12 A8 Global 独立任务规范
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 12:36`（Asia/Shanghai）
+文档更新时间：`2026-08-15 14:59`（Asia/Shanghai）
 
 > 定义未来 Global AI Intelligence Codex Automation 的单次任务合同。
 > 当前不创建 Automation，不检索真实情报，不生成或提交日报。
@@ -15,7 +15,7 @@
 
 ## 运行合同
 
-- 必须先读取 [Codex AI Intelligence Shared Skill](AI_Intelligence_Skill.md)。
+- 必须先读取 [Personal MVP Route Amendment](../../Stage1/Stage_1.12_Personal_MVP_Route_Amendment_v0.1.md)，再读取 [Codex AI Intelligence Shared Skill](AI_Intelligence_Skill.md) 与本 Global Task，随后加载 Stage 1 `FROZEN` 规则和 Source Registry。
 - `Region` 固定为 `Global`，不得采集或生成 China Event。
 - 计划调度为每日 `08:00 Asia/Shanghai`。
 - 每次运行必须由调用方显式提供 `report_date`、`coverage_started_at`、`coverage_ended_at` 与 `revision`。
@@ -32,7 +32,7 @@ Global 重点主体包括 OpenAI、Google DeepMind / Gemini、Anthropic、Meta A
 
 ## 执行步骤
 
-1. 核对 Shared Skill、Global Task、Stage 1 `FROZEN` 规则、Source Registry 与任务参数一致。
+1. 按 Amendment → Shared Skill → Global Task → Stage 1 `FROZEN` → Source Registry 的读取顺序核对任务参数和权威边界。
 2. 只载入 Global 来源，并对覆盖窗口做明确记录。
 3. 优先检查官方模型、产品、API、研究、公司发布、官方仓库和核心人物公开动态。
 4. 按需覆盖 AI Coding、Agent、Voice / STS、Multimodal、Robotics / Embodied AI、Open Source、Infrastructure、Research、Product 与 Business / Ecosystem。
