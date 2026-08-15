@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v27
+# Eterna 文档变更记录 v28
 
-内部版本：`v27`
+内部版本：`v28`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 16:50`（Asia/Shanghai）
+文档更新时间：`2026-08-15 21:07`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,18 @@
 ---
 
 ## 2026-08-15
+
+### AI 情报自动化系统 Stage 1.12 A10
+
+- 创建 `Eterna Global AI Intelligence` 与 `Eterna China AI Intelligence` 两条真实 Codex Automation，分别按 `08:00` / `20:00 Asia/Shanghai` 运行
+- 两条任务实际配置均为 `gpt-5.6-luna / high`，绑定 Eterna_Docs 本地项目并保持 Global / China 独立
+- 新增 Automation Safety Gate，将当前模式冻结为 `UNATTENDED_OBSERVE`：允许自动 Research、Evidence Verification、确定性 Event Anchor、分析和 would-be report 输出
+- 明确禁止 Automation 修改 repository、写 `reports/**` / state、执行 Git、发送 Gmail、创建 Secret 或修改 FROZEN / INDEX / CHANGELOG
+- `UNATTENDED_WRITE` 仅作未来状态，必须由后续独立节点批准；`AUTOMATION_MAIN_WRITE_GATE` 继续保持 `NOT READY`
+- 当前产品管理工具未提供 Run now / Test 调用入口，未模拟测试运行；未创建 GitHub Actions、系统 cron、launchd、daemon、OpenAI API 或 `LLMProvider`
+- 未修改 Stage 1.1–1.11 `FROZEN` 正文或 A1–A9，未开始 Stage 1.12 A11；同步更新 Codex 规范入口、根索引与研究与探索分类索引
+
+---
 
 ### AI 情报自动化系统 Stage 1.12 A9 Fix-A
 

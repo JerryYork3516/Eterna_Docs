@@ -1,15 +1,15 @@
-# Codex AI Intelligence · 运行规范入口 · v0.4
+# Codex AI Intelligence · 运行规范入口 · v0.5
 
-内部版本：`v0.4`
+内部版本：`v0.5`
 
-文档性质：Stage 1.12 A8–A9 Codex 情报执行规范入口
+文档性质：Stage 1.12 A8–A10 Codex 情报执行规范入口
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 16:50`（Asia/Shanghai）
+文档更新时间：`2026-08-15 21:07`（Asia/Shanghai）
 
-> 本目录定义未来 Codex Automation 执行 AI 情报研究时的可复用、可审核任务契约。
-> 当前建立 Codex 运行规范与人工单次执行合同，不创建 Codex Automation，也不构成 Eterna 正式产品定义、上位承诺或无人值守写入授权。
+> 本目录定义 Codex Automation 执行 AI 情报研究时的可复用、可审核任务契约。
+> A10 已创建两条 Observe-only Automation；这不构成 Eterna 正式产品定义、上位承诺或无人值守写入授权。
 
 ---
 
@@ -36,6 +36,7 @@
 - [Global Task](Global_Task.md)：未来 Global AI Intelligence 独立任务契约。
 - [China Task](China_Task.md)：未来 China AI Intelligence 独立任务契约。
 - [Single-Run Execution Contract](Single_Run_Execution.md)：A9 人工单次运行的输入、门禁、Research、Report、Git、Gmail 与失败处理合同。
+- [Automation Safety Gate](Automation_Safety_Gate.md)：A10 `UNATTENDED_OBSERVE` 与未来 `UNATTENDED_WRITE` 的副作用门禁及实际任务登记。
 
 Current Personal MVP 的 structured Event identity 必须由 `pipeline/event_anchor.py` 对 Evidence 支持的结构化字段进行确定性生成；Codex 自由文本只能作为 Event Label，不得作为正式 `event_anchor`。
 
@@ -59,6 +60,15 @@ A9 只验证一次由用户明确批准、人工触发的 Region 任务。规范
 
 ---
 
+## A10 Observe Automation
+
+- `Eterna Global AI Intelligence`：每日 `08:00 Asia/Shanghai`，`gpt-5.6-luna / high`，`UNATTENDED_OBSERVE`。
+- `Eterna China AI Intelligence`：每日 `20:00 Asia/Shanghai`，`gpt-5.6-luna / high`，`UNATTENDED_OBSERVE`。
+- 两条任务只返回 would-be report 供 review；repository mutation、reports write、Git 与 Gmail 均为 `NOT_ATTEMPTED`。
+- `AUTOMATION_MAIN_WRITE_GATE = NOT READY`；`UNATTENDED_WRITE` 必须等待后续独立节点批准。
+
+---
+
 ## 后续节点
 
-后续节点可在独立批准后创建 Codex Automation、Git 归档和 Gmail 投递能力。所有后续实现必须遵守 Amendment，以及 Stage 1.1–1.11 中未被明确 supersede 的合规、幂等、Region 隔离、写入路径和敏感信息边界。
+后续节点可在独立批准后评估 Automation 写入、Git 归档和 Gmail 投递能力。所有后续实现必须遵守 Amendment，以及 Stage 1.1–1.11 中未被明确 supersede 的合规、幂等、Region 隔离、写入路径和敏感信息边界。

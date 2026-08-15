@@ -1,12 +1,12 @@
-# Eterna 研究与探索 分类索引 v15
+# Eterna 研究与探索 分类索引 v16
 
-内部版本：`v15`
+内部版本：`v16`
 
 文档性质：Eterna 研究与探索分类索引
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 15:31`（Asia/Shanghai）
+文档更新时间：`2026-08-15 21:07`（Asia/Shanghai）
 
 > 收录尚未进入正式产品与架构体系的研究材料和探索性结论。
 > 本目录内容默认不构成产品承诺或正式工程契约。
@@ -41,6 +41,7 @@
 - [Global AI Intelligence Codex Task](AI_情报/automation/codex/Global_Task.md)（ACTIVE，Global 独立任务规范）
 - [China AI Intelligence Codex Task](AI_情报/automation/codex/China_Task.md)（ACTIVE，China 独立任务规范）
 - [Codex AI Intelligence Single-Run Execution Contract](AI_情报/automation/codex/Single_Run_Execution.md)（ACTIVE，Stage 1.12 A9 人工单次执行合同）
+- [Codex AI Intelligence Automation Safety Gate](AI_情报/automation/codex/Automation_Safety_Gate.md)（ACTIVE，Stage 1.12 A10 Observe-only 无人值守安全门禁）
 
 ---
 
