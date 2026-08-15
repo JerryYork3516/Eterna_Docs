@@ -1,15 +1,15 @@
-# Codex AI Intelligence · 运行规范入口 · v0.2
+# Codex AI Intelligence · 运行规范入口 · v0.3
 
-内部版本：`v0.2`
+内部版本：`v0.3`
 
-文档性质：Stage 1.12 A8 Codex 情报执行规范入口
+文档性质：Stage 1.12 A8–A9 Codex 情报执行规范入口
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 14:59`（Asia/Shanghai）
+文档更新时间：`2026-08-15 15:31`（Asia/Shanghai）
 
 > 本目录定义未来 Codex Automation 执行 AI 情报研究时的可复用、可审核任务契约。
-> 当前仅建立规范，不创建 Codex Automation，不执行网络情报采集，不生成日报，也不构成 Eterna 正式产品定义或上位承诺。
+> 当前建立 Codex 运行规范与人工单次执行合同，不创建 Codex Automation，也不构成 Eterna 正式产品定义、上位承诺或无人值守写入授权。
 
 ---
 
@@ -34,8 +34,9 @@
 - [AI Intelligence Shared Skill](AI_Intelligence_Skill.md)：Global / China 共用的研究、证据、状态、去重、价值提取与安全规则。
 - [Global Task](Global_Task.md)：未来 Global AI Intelligence 独立任务契约。
 - [China Task](China_Task.md)：未来 China AI Intelligence 独立任务契约。
+- [Single-Run Execution Contract](Single_Run_Execution.md)：A9 人工单次运行的输入、门禁、Research、Report、Git、Gmail 与失败处理合同。
 
-运行时必须先读取 Amendment，再读取 Shared Skill 与对应 Region Task，随后加载未被 supersede 的 Stage 1 `FROZEN` 规则和 Source Registry；不得把两条链合并执行。
+运行时必须先读取 Amendment，再读取 Shared Skill、对应 Region Task 与 Single-Run Execution Contract，随后加载未被 supersede 的 Stage 1 `FROZEN` 规则和 Source Registry；不得把两条链合并执行。
 
 ---
 
@@ -46,6 +47,12 @@
 - 计划模型档位：`Luna High`。创建真实 Automation 前必须按当时官方文档和当前账号实际可选项重新核验准确名称、档位与可用性，不得静默替换模型或降低治理标准。
 
 OpenAI 官方的 [GPT-5.6 Luna model page](https://developers.openai.com/api/docs/models/gpt-5.6-luna) 当前记录 `high` reasoning effort，但这不证明特定 Codex Automation 或账号届时可选；A8 Fix 不创建 API 调用、凭证或模型配置。
+
+---
+
+## 人工单次执行
+
+A9 只验证一次由用户明确批准、人工触发的 Region 任务。规范文件与正式日报必须分开提交；日报完成验证、commit 且 push 后，才可探测并使用当前已授权的 Gmail 能力。`AUTOMATION_MAIN_WRITE_GATE = NOT READY` 继续有效。
 
 ---
 

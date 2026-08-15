@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v25
+# Eterna 文档变更记录 v26
 
-内部版本：`v25`
+内部版本：`v26`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 14:59`（Asia/Shanghai）
+文档更新时间：`2026-08-15 15:31`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,17 @@
 ---
 
 ## 2026-08-15
+
+### AI 情报自动化系统 Stage 1.12 A9-A
+
+- 新增 Codex AI Intelligence Single-Run Execution Contract，冻结人工单次运行的输入、仓库门禁、Research、Evidence、Report、Git、Gmail 与失败分类
+- 明确 A9 人工单次提交不等于无人值守写入授权，`AUTOMATION_MAIN_WRITE_GATE` 继续保持 `NOT READY`
+- 规范只允许一个 Region、明确 Coverage Window、Stage 1.8 正式路径、报告验证后单独 commit / push，以及 push 成功后再生成 Gmail 摘要
+- Gmail 能力缺失时使用 `BLOCKED_BY_CAPABILITY`，不得创建 Secret、Cookie、Session 或非授权邮件能力
+- 未创建 Automation、GitHub Actions、OpenAI API、`LLMProvider`、Secret 或常驻服务，未修改任何 `FROZEN` 文档或 A1–A7，未开始 Stage 1.12 A10
+- 同步更新 Codex 规范入口、根索引与研究与探索分类索引
+
+---
 
 ### AI 情报自动化系统 Stage 1.12 A8 Fix
 

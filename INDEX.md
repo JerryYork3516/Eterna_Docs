@@ -1,12 +1,12 @@
-# Eterna 文档索引 v19
+# Eterna 文档索引 v20
 
-内部版本：`v19`
+内部版本：`v20`
 
 文档性质：Eterna 正式文档与知识库总索引
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 14:59`（Asia/Shanghai）
+文档更新时间：`2026-08-15 15:31`（Asia/Shanghai）
 
 > Eterna 正式文档与知识体系的唯一权威入口。
 > 当前已有四份上位文档完成核对并组成可引用的冻结输入集合；冻结内容 Commit 为 `392e76e45b7d733ff3ba3e0f2a633b653f3fbacf`。
@@ -67,6 +67,7 @@
 - [Codex AI Intelligence Shared Skill](06_研究与探索/AI_情报/automation/codex/AI_Intelligence_Skill.md)（ACTIVE，不构成已安装 Skill 或已创建 Automation）
 - [Global AI Intelligence Codex Task](06_研究与探索/AI_情报/automation/codex/Global_Task.md)（ACTIVE，Global 独立任务规范）
 - [China AI Intelligence Codex Task](06_研究与探索/AI_情报/automation/codex/China_Task.md)（ACTIVE，China 独立任务规范）
+- [Codex AI Intelligence Single-Run Execution Contract](06_研究与探索/AI_情报/automation/codex/Single_Run_Execution.md)（ACTIVE，Stage 1.12 A9 人工单次执行合同）
 
 ---
 
