@@ -1,6 +1,6 @@
 # Global AI Intelligence · Daily Report · 2026-08-15
 
-Report ID：`global-2026-08-15-r1`
+Report ID：`global-2026-08-15-r2`
 
 Report Date：`2026-08-15`
 
@@ -10,11 +10,11 @@ Report Timezone：`Asia/Shanghai`
 
 Coverage：`2026-08-14T00:00:00+08:00 → 2026-08-15T15:34:20+08:00`
 
-Generated At：`2026-08-15T15:36:57+08:00`
+Generated At：`2026-08-15T16:53:40+08:00`
 
 Status：`Generated`
 
-Revision：`r1`
+Revision：`r2`
 
 > 本报告属于 `06_研究与探索` 的研究归档，不构成 Eterna 正式产品定义、路线变更、Provider 选择或自动执行指令。
 
@@ -32,6 +32,8 @@ Revision：`r1`
 
 ### Anthropic 公布未来 Claude 文本水印机制
 
+- Event Anchor：`event_anchor_35cc256cff8475fbe46f964bf7d967927b3d1e16f5baa369f4db448413003819`
+- Event Anchor Material：`Global / Anthropic / publishes text watermark specification / Claude text watermark / version=null / 2026-08-14`
 - What happened：Anthropic 于 2026-08-14 公布 Claude 文本水印说明，表示未来 Claude 模型生成的文本将使用基于 SynthID-Text 的水印方法。官方说明称该水印不添加隐藏字符、不携带个人或组织身份信息，并计划后续提供检测 API。这里确认的是 Anthropic 的公开说明与未来部署计划，不将计划扩大表述为所有现有模型均已完成部署。
 - Status：Confirmed
 - Confidence：High
@@ -44,6 +46,8 @@ Revision：`r1`
 
 ### GitHub Copilot 开始逐步提供 Grok 4.6
 
+- Event Anchor：`event_anchor_b5873463bb5a7e8f3e4f567cdb97ae30a8bf75f47b7708cc00f3f765c35ca53a`
+- Event Anchor Material：`Global / GitHub / announces rollout / Grok 4.6 in GitHub Copilot / version=4.6 / 2026-08-14`
 - What happened：GitHub 于 2026-08-14 宣布 Grok 4.6 正在 GitHub Copilot 中逐步上线，适用于 Copilot Pro、Pro+、Max、Business 与 Enterprise，并计划覆盖 Visual Studio Code、Visual Studio、Copilot CLI、Copilot cloud agent、Copilot app、JetBrains、Xcode 与 Eclipse。Business / Enterprise 的 Grok 4.6 策略默认关闭，需要管理员启用。该事件只确认 GitHub Copilot 的可用性与 GitHub 自身表述，不把 GitHub 内部测试扩写为独立性能结论。
 - Status：Confirmed
 - Confidence：High
@@ -60,6 +64,8 @@ Revision：`r1`
 
 ### Hugging Face 社区观察开放模型采用与 Agent 流量变化
 
+- Event Anchor：`event_anchor_e713e31da7dabaf264d3144262e985bda8e3008b9b734489884b360f9a6477d1`
+- Event Anchor Material：`Global / Hugging Face Community / publishes ecosystem observations / State of Open Models: Summer 2026 Observations / version=null / 2026-08-14`
 - What happened：Hugging Face Community Blog 于 2026-08-14 发布基于 2026 年前七个月 Hub 活动的生态观察。作者认为下载量与关注度反映不同信号，小模型仍承载大量实际使用，并基于新公开的 agent-usage 数据集观察到 Agent 客户端流量结构快速变化。文章同时明确其指标只覆盖 Hugging Face Hub，不代表 API、私有部署或整个 AI 市场。
 - Status：Community trend
 - Confidence：Medium
@@ -85,13 +91,13 @@ Revision：`r1`
   - [xAI News](https://x.ai/news)
   - [NVIDIA Newsroom](https://nvidianews.nvidia.com/news/latest)
   - [Hugging Face Blog](https://huggingface.co/blog)
-  - [GitHub Changelog](https://github.blog/changelog/)
+  - [GitHub Changelog](https://github.blog/changelog/)（通过 [Stage 1.12 Source Registry Addendum](../../../../Stage1/Stage_1.12_Source_Registry_Addendum_v0.1.md) 准入为 `Global / Official / P0 / High / Fact Citation Yes`；只适用于 GitHub 自身公告）
 - P1：成功访问 2 个入口；Hugging Face Community 形成 1 个 `Community trend`，arXiv recent 未筛出达到本次准入标准的高价值新增事件。
 - P3：成功访问 Hacker News 首页用于发现；未发现可独立进入日报的社区事件。
 - 不可用来源：0。
 - 已知覆盖缺口：本次是有限人工 E2E，不是互联网全量扫描；未接入 X、Reddit 或封闭平台 API；部分官方索引只提供日期或月份、缺少精确发布时间；动态页面与搜索索引可能存在时延；未执行全组织 GitHub release / commit 扫描。
 - 关键 P0 缺失：未发现完全不可访问的关键 P0 入口，但上述时间粒度与索引时延限制意味着不能声明完整覆盖。
-- 去重与事件身份审计：3 个 Event 分别使用 `anthropic-claude-text-watermark-announcement-2026-08-14`、`github-copilot-grok-4.6-rollout-2026-08-14`、`huggingface-open-model-summer-observations-2026-08-14` 作为显式事件实例锚点；未发现 Exact Duplicate、Near Duplicate 或 Same Event 合并条件，未跨 Region 聚类。
+- 去重与事件身份审计：3 个 Event 均使用 `EventAnchorInput → deterministic_event_anchor(...)`，按 Region、规范化主体/行为/对象/版本、Evidence 支持的 `event_date=2026-08-14` 与 SHA-256 生成正式 identity；原 r1 人类 slug 不再作为正式 anchor。未发现 Exact Duplicate、Near Duplicate 或 Same Event 合并条件，未跨 Region 聚类。
 
 ---
 
@@ -128,3 +134,4 @@ Revision：`r1`
 ## Revision History
 
 - `r1` — `2026-08-15T15:36:57+08:00`：首次正式生成；完成 Global 单次人工 E2E 研究、证据核验、去重审计、报告校验与 Eterna 价值提取。
+- `r2` — `2026-08-15T16:53:40+08:00`：治理与可追溯性修订；通过 Stage 1.12 Source Registry Addendum 补齐 GitHub Changelog 的正式准入，并将三个 Event anchor 改为确定性 SHA-256 identity。事件事实内容未因本次 Fix 被推翻，未重新研究；r1 继续由 Git 历史保留。
