@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v26
+# Eterna 文档变更记录 v27
 
-内部版本：`v26`
+内部版本：`v27`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 15:31`（Asia/Shanghai）
+文档更新时间：`2026-08-15 16:50`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,18 @@
 ---
 
 ## 2026-08-15
+
+### AI 情报自动化系统 Stage 1.12 A9 Fix-A
+
+- 新增 `FROZEN` Source Registry Addendum，以追加式治理正式准入 GitHub Platform、Blog 与 Changelog 为 `Global / Official / P0 / High / Fact Citation Yes` 来源
+- 明确 Current Personal MVP 来源权威为 Base Registry 与当前有效 Addendum；未登记来源只可 discovery，不得由 Codex 动态提升为正式已评级 Evidence
+- 新增基于 Region、规范化主体/行为/对象/版本、Evidence 支持事件日期与 SHA-256 的确定性 Event Anchor Utility，输出 `event_anchor_<64 lowercase hex>`
+- Shared Skill 与 Single-Run Contract 禁止 Codex 自由命名正式 anchor；缺少可靠事件日期时 fail closed
+- 新增完全离线的确定性、规范化、隔离、运行时独立与失败边界测试；未修改 A1–A7 主体、依赖或 Stage 1.1–1.11 `FROZEN` 历史正文
+- 未创建 Automation、GitHub Actions、OpenAI API、`LLMProvider`、Secret 或 Gmail 投递，`AUTOMATION_MAIN_WRITE_GATE` 保持 `NOT READY`，未开始 Stage 1.12 A10
+- 同步更新 Codex 规范入口、根索引与研究与探索分类索引
+
+---
 
 ### AI 情报自动化系统 Stage 1.12 A9-A
 

@@ -1,12 +1,12 @@
-# Codex AI Intelligence · 运行规范入口 · v0.3
+# Codex AI Intelligence · 运行规范入口 · v0.4
 
-内部版本：`v0.3`
+内部版本：`v0.4`
 
 文档性质：Stage 1.12 A8–A9 Codex 情报执行规范入口
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 15:31`（Asia/Shanghai）
+文档更新时间：`2026-08-15 16:50`（Asia/Shanghai）
 
 > 本目录定义未来 Codex Automation 执行 AI 情报研究时的可复用、可审核任务契约。
 > 当前建立 Codex 运行规范与人工单次执行合同，不创建 Codex Automation，也不构成 Eterna 正式产品定义、上位承诺或无人值守写入授权。
@@ -31,12 +31,15 @@
 ## 文件关系
 
 - [Personal MVP Route Amendment](../../Stage1/Stage_1.12_Personal_MVP_Route_Amendment_v0.1.md)：当前 Personal MVP 路线调整及权威优先级。
+- [Source Registry Addendum](../../Stage1/Stage_1.12_Source_Registry_Addendum_v0.1.md)：Current Personal MVP 对 GitHub 官方来源的追加准入；与 Base Source Registry 共同构成当前来源权威。
 - [AI Intelligence Shared Skill](AI_Intelligence_Skill.md)：Global / China 共用的研究、证据、状态、去重、价值提取与安全规则。
 - [Global Task](Global_Task.md)：未来 Global AI Intelligence 独立任务契约。
 - [China Task](China_Task.md)：未来 China AI Intelligence 独立任务契约。
 - [Single-Run Execution Contract](Single_Run_Execution.md)：A9 人工单次运行的输入、门禁、Research、Report、Git、Gmail 与失败处理合同。
 
-运行时必须先读取 Amendment，再读取 Shared Skill、对应 Region Task 与 Single-Run Execution Contract，随后加载未被 supersede 的 Stage 1 `FROZEN` 规则和 Source Registry；不得把两条链合并执行。
+Current Personal MVP 的 structured Event identity 必须由 `pipeline/event_anchor.py` 对 Evidence 支持的结构化字段进行确定性生成；Codex 自由文本只能作为 Event Label，不得作为正式 `event_anchor`。
+
+运行时必须先读取 Amendment，再读取 Shared Skill、对应 Region Task 与 Single-Run Execution Contract，随后加载未被 supersede 的 Stage 1 `FROZEN` 规则、Base Source Registry 及当前有效 Addendum；不得把两条链合并执行。
 
 ---
 

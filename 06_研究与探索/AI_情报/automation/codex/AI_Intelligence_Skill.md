@@ -1,12 +1,12 @@
-# Codex AI Intelligence · Shared Skill Specification · v0.2
+# Codex AI Intelligence · Shared Skill Specification · v0.3
 
-内部版本：`v0.2`
+内部版本：`v0.3`
 
 文档性质：Stage 1.12 A8 共用研究执行规范
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 14:59`（Asia/Shanghai）
+文档更新时间：`2026-08-15 16:50`（Asia/Shanghai）
 
 > 定义未来 Codex Automation 如何执行 Global / China AI Intelligence。
 > 本文件是研究与工程执行规范，不构成 Eterna 正式产品定义、路线承诺、已安装 Skill 或已创建 Automation。
@@ -37,7 +37,7 @@ A8 Codex Shared Skill / Region Task
 2. 本 Shared Skill。
 3. 对应 Region Task。
 4. Stage 1.1–1.11 `FROZEN` 文档。
-5. Source Registry。
+5. Base Source Registry 与当前有效、明确批准的 Source Registry Addendum。
 
 若 Stage 1.10 / 1.11 与 Amendment 在调度平台、LLM runtime 或 Stage 1.12 后续实现顺序上冲突，以 Amendment 为准。除此之外，Amendment 不得隐式覆盖任何 `FROZEN` 内容；出现未覆盖冲突时必须 fail closed 并报告。
 
@@ -57,7 +57,7 @@ A8 Codex Shared Skill / Region Task
 
 ## 来源与合规
 
-来源必须能映射到 Source Registry，并遵守 `P0 > P1 > P2 > P3` 的核验优先级：
+来源必须能映射到 [Base Source Registry](../../Stage1/Source_Registry_v0.1.md)，或映射到当前有效、明确批准的 [Stage 1.12 Source Registry Addendum](../../Stage1/Stage_1.12_Source_Registry_Addendum_v0.1.md)，并遵守 `P0 > P1 > P2 > P3` 的核验优先级：
 
 - `P0`：官方发布、官方文档、官方仓库等一手事实来源。
 - `P1`：核心人物、研究人员与可信技术社区，用于补充事实或发现高价值信号。
@@ -65,6 +65,8 @@ A8 Codex Shared Skill / Region Task
 - `P3`：社区趋势、短视频与用户讨论，用于趋势和实测信号发现，不能单独证明事实。
 
 Priority 是来源治理属性，不等于事件 Information Status。人物来源用于发现信号，其表述不会自动成为事实。
+
+未登记来源可以用于 discovery，但不得直接成为带正式 Priority、Credibility 或 Fact Citation 评级的 Evidence。必须先完成显式治理准入，或使用已经登记的其他合法来源核验；Codex 不得动态添加来源，也不得把“看起来是官网”视为自动准入。
 
 主动关注 OpenAI、Google DeepMind / Gemini、Anthropic、Meta AI、Microsoft、NVIDIA、Hugging Face、xAI、DeepSeek、Qwen、ByteDance Seed / Doubao、GLM / Z.ai、Kimi、MiniMax、Tencent Hunyuan、Baidu、Huawei 及 Source Registry 中的其他主体。除公司公告外，还应关注核心工程师、模型负责人、产品负责人、研究人员、官方 GitHub、Hugging Face Organization 以及 release、commit 和 docs changes。原则是 `Follow builders, not just influencers`；具体人员、平台和 URL 仍以 Source Registry 当前登记为准，不得从采集内容动态添加来源。
 
@@ -102,7 +104,7 @@ Information Status 只能使用：
 2. `Near Duplicate`：内容基本相同但 URL、标题或平台不同，保留来源关系并转为独立 Evidence。
 3. `Same Event, Different Evidence`：多个条目描述同一个现实事件，进入同一 IntelligenceEvent，并保留全部独立 Evidence。
 
-Same Event 身份必须核对 Region、主体、行为、对象、版本、明确的事件实例锚点、合理事件时间与证据。事件实例锚点必须由确定性上游规则显式提供、稳定且可审核；不得自动生成模糊时间 bucket、随机锚点或用 LLM 猜测缺失锚点。
+Same Event 身份必须核对 Region、主体、行为、对象、版本、明确的事件实例锚点、合理事件时间与证据。Current Personal MVP 的事件实例锚点必须通过 `EventAnchorInput → deterministic_event_anchor(...)` 生成，并使用可追溯 Evidence 支持的实际事件日期或官方发布日期；不得由 Codex 自由命名，不得使用模糊时间 bucket、随机锚点、当前时间、`report_date`、`collected_at` 或 LLM 猜测缺失锚点。
 
 - 相同主体/行为/对象/版本与相同锚点：可进入同一 Event。
 - 相同描述但不同锚点、版本、主体、行为或现实事件实例：必须分为不同 Event。
