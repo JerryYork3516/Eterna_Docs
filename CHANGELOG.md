@@ -1,15 +1,29 @@
-# Eterna 文档变更记录 v23
+# Eterna 文档变更记录 v24
 
-内部版本：`v23`
+内部版本：`v24`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-14 13:36`（Asia/Shanghai）
+文档更新时间：`2026-08-15 12:36`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
+
+---
+
+## 2026-08-15
+
+### AI 情报自动化系统 Stage 1.12 A8
+
+- 新增 Codex AI Intelligence 运行规范入口、Shared Skill、Global Task 与 China Task，定义未来 Codex Automation 的可复用、可审核任务合同
+- 将当前个人 MVP 的 A8 研究分析入口调整为 Codex Task / Skill 规范，不实现 OpenAI API `LLMProvider`；A1–A7 确定性治理与审计基础保持不变
+- 继承 Source Registry、Global / China 隔离、四类 Information Status、Exact / Near / Same Event、显式事件实例锚点、完整 Evidence 追溯和 Eterna 价值提取边界
+- 冻结 Prompt Injection 防线、合法来源规则、Codex 使用预算、Stage 1.8 报告结构与未来 Git / Gmail 副作用顺序
+- 仅记录 Global `08:00`、China `20:00`（Asia/Shanghai）及 `Luna High` 计划配置；未创建 Codex Automation、Workflow、API 调用、Secret、真实网络采集、真实日报或 Gmail 投递
+- 未修改 Stage 1.1–1.11、A1–A7 或任何 Eterna `FROZEN` 正文；`AUTOMATION_MAIN_WRITE_GATE` 保持 `NOT READY`，未开始 Stage 1.12 A9
+- 同步更新根索引与研究与探索分类索引
 
 ---
 
