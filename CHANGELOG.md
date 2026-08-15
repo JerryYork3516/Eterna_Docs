@@ -1,12 +1,12 @@
-# Eterna 文档变更记录 v28
+# Eterna 文档变更记录 v29
 
-内部版本：`v28`
+内部版本：`v29`
 
 文档性质：Eterna 文档变更与审核记录
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 21:07`（Asia/Shanghai）
+文档更新时间：`2026-08-15 22:08`（Asia/Shanghai）
 
 > 记录 Eterna 权威文档、知识库结构与治理规则的新增、调整和审核结果。
 > 变更按日期倒序记录，并保留文档导入时的原始审核状态。
@@ -14,6 +14,17 @@
 ---
 
 ## 2026-08-15
+
+### AI 情报自动化系统 Stage 1.12 A11
+
+- 新增 `FROZEN` Unattended Write and Delivery Amendment，只对 Current Personal MVP 的日报路径、Git 写入目标、A10 Observe-only 门禁与 Gmail capability 做局部 supersede
+- 当前正式路径冻结为 `06_研究与探索/每日AI资讯/YYYY-MM-DD_Global_AI_News.md` 与 `YYYY-MM-DD_China_AI_News.md`；旧 `reports/**` 历史保留但不再是 unattended write 新目标，且未创建空目录或真实日报
+- 当前唯一自动 Git 目标冻结为 `AI_News` / `origin/AI_News`；`AUTOMATION_AI_NEWS_WRITE_GATE = READY`，`AUTOMATION_MAIN_WRITE_GATE = NOT READY`
+- Automation 模式升级为受限 `UNATTENDED_WRITE`，任一前序步骤失败都禁止日报写入、commit、push 或 Gmail；一次 commit 只能包含当前 Region、日期与 Revision 的一个日报
+- 默认 Path Policy 只允许两个新日报文件模式，拒绝旧 reports、State、cross-write、非法日期、其他路径、symlink / traversal、`main` 与其他 Git 目标；A4 历史 State 校验继续隔离保留，不进入 unattended allowlist
+- Gmail 只在对应日报成功 push 到 `origin/AI_News` 后发送 `3–5` 条重点摘要；收件人由任务受保护配置提供，仓库不记录真实邮箱地址或 OAuth、Token、Cookie、Session
+- 更新 Shared Skill、Global / China Task、Single-Run Contract、Safety Gate、Codex 入口与两级索引；未修改 Stage 1.1–1.11 `FROZEN` 历史正文、依赖、配置或 State 数据
+- 本节点未运行真实 AI News 任务、未发送真实日报邮件、未创建 Workflow / cron / launchd / daemon / OpenAI API / `LLMProvider`，也未修改或 push `main`
 
 ### AI 情报自动化系统 Stage 1.12 A10
 

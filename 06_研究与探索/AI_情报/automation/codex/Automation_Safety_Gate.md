@@ -1,15 +1,15 @@
-# Codex AI Intelligence · Automation Safety Gate · Stage 1.12 A10 · v0.1
+# Codex AI Intelligence · Automation Safety Gate · Stage 1.12 A10/A11 · v0.2
 
-内部版本：`v0.1`
+内部版本：`v0.2`
 
-文档性质：Codex Automation 无人值守安全门禁
+文档性质：Codex Automation 无人值守安全与副作用门禁
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 21:07`（Asia/Shanghai）
+文档更新时间：`2026-08-15 22:08`（Asia/Shanghai）
 
-> 本文件记录 Stage 1.12 A10 两条真实 Codex Automation 的运行模式与副作用门禁。
-> 当前只批准自动研究与分析，不批准仓库写入、Git、Gmail、Secret 或其他外部执行。
+> A11 将 Current Personal MVP 从 Observe-only 升级为受限 `UNATTENDED_WRITE`。
+> 授权只覆盖 `AI_News` 上的单一 Region 日报与成功 push 后的 Gmail 摘要；本次治理变更不运行真实任务或发送邮件。
 
 ---
 
@@ -17,74 +17,154 @@
 
 ```text
 AUTOMATION_MAIN_WRITE_GATE = NOT READY
+AUTOMATION_AI_NEWS_WRITE_GATE = READY
 ```
 
-### UNATTENDED_OBSERVE
-
-Stage 1.12 A10 当前唯一允许的无人值守模式。
-
-允许：
-
-- 自动触发对应 Region 的 Research；
-- 使用公开、合法、已准入来源进行 Evidence Verification；
-- 执行 Exact / Near / Same Event 判断与确定性 Event Anchor；
-- 判断 Status、Confidence、Importance 并生成 Eterna Value Extraction；
-- 返回 would-be report 与验证结果，供用户 review。
-
-禁止：
-
-- 修改 repository 中的任何文件；
-- 写入 `reports/**`、`automation/state/**` 或其他路径；
-- 执行 `git add`、commit、push 或其他 Git 写操作；
-- 发送 Gmail 或创建 Email Delivery 状态；
-- 修改 `FROZEN`、INDEX、CHANGELOG、配置或规则；
-- 创建 Secret、OpenAI API / `LLMProvider`、GitHub Actions 或其他 scheduler；
-- 因来源、日期、证据或治理条件不足而降低安全标准。
+- `branch` 必须严格等于 `AI_News`。
+- `upstream` 必须严格等于 `origin/AI_News`。
+- `main` 永远不是当前 Automation 写入目标。
+- 任一 Git 目标、工作区、HEAD、路径或前序执行条件不一致时必须 fail closed。
 
 ### UNATTENDED_WRITE
 
-未来候选模式，当前未批准、未实现、未启用。
+Stage 1.12 A11 当前唯一允许的无人值守模式。
 
-只有后续独立节点完成写入路径、幂等、并发、Git 身份、失败恢复、最小权限和安全验收，并明确将 `AUTOMATION_MAIN_WRITE_GATE` 改为可写状态后，Automation 才能进入该模式。A10 的创建成功、Observe 输出或人工 review 均不构成隐式批准。
+只允许完整链：
+
+```text
+Research
+→ Evidence Verification
+→ Dedup / deterministic Event Anchor
+→ Status / Confidence / Importance
+→ Eterna Value Extraction
+→ Markdown Report
+→ Validation
+→ 写入每日AI资讯
+→ git diff gate
+→ commit
+→ push origin/AI_News
+→ Gmail Summary
+```
+
+任何前序步骤 FAIL，禁止继续后续副作用。
+
+允许写入：
+
+```text
+Global: 06_研究与探索/每日AI资讯/YYYY-MM-DD_Global_AI_News.md
+China:  06_研究与探索/每日AI资讯/YYYY-MM-DD_China_AI_News.md
+```
+
+- 每次只允许当前 Region、当前业务日期、当前 Revision 的一个正式日报文件。
+- Global 不能写 China 文件，China 不能写 Global 文件。
+- 第一份真实日报写入时才按需创建 `每日AI资讯` 目录，不预建空目录。
+- 旧 `06_研究与探索/AI_情报/reports/**` 只保留历史，不是当前写入目标。
+
+禁止：
+
+- push、checkout、merge 或修改 `main`；
+- force push、改写历史或创建其他分支；
+- 修改 Stage 1.1–1.11 `FROZEN`、INDEX、CHANGELOG、AGENTS、配置或规则；
+- 写 `automation/state/**` 或日报之外的任何文件；
+- 删除或迁移旧 `reports/**` 历史；
+- 暂存、提交、覆盖或清理人工修改；
+- 创建 Secret、OpenAI API / `LLMProvider`、GitHub Actions 或其他 scheduler；
+- 因来源、日期、证据、Event Anchor、路径、分支或治理条件不足而降低安全标准。
+
+---
+
+## Git 门禁
+
+提交前必须确认：
+
+- repo 为 `JerryYork3516/Eterna_Docs`；
+- branch / upstream 为 `AI_News` / `origin/AI_News`；
+- working tree 在本次报告写入前 clean；
+- diff 只有当前 Region、当前日期日报；
+- 路径、日期、Region、Report Status、Revision、固定章节、Evidence 和敏感信息校验 PASS；
+- 没有 State、FROZEN、INDEX、CHANGELOG、AGENTS、配置或其他文件变化。
+
+确定性 commit message：
+
+```text
+intel: add Global AI news YYYY-MM-DD
+intel: add China AI news YYYY-MM-DD
+intel: revise Global AI news YYYY-MM-DD rN
+intel: revise China AI news YYYY-MM-DD rN
+```
+
+一次自动 commit 只能包含一个日报。无有效变化时不得创建空 commit。push 目标只能是 `origin AI_News`。
+
+---
+
+## Gmail 门禁
+
+当前 Gmail capability 已由用户连接并人工测试成功。Automation 只有在对应日报 commit 且成功 push 到 `origin/AI_News` 后才可使用该已授权 capability。
+
+邮件只投影：
+
+- 最重要 `3–5` 条；
+- Event 状态、Confidence、Importance、关键不确定性和主要公开来源；
+- Eterna 价值提取与今日主控判断；
+- 其他 News 简要摘要；
+- 对应日报路径与 Revision。
+
+邮件不发送 Markdown 附件，不复制整份日报，不引入日报之外的新事实或判断。
+
+收件人由 Codex Automation 任务受保护配置提供。Proton 收件地址、其他真实邮箱地址、OAuth、Token、Cookie、Session、密码和账号信息不得写入仓库。
+
+同一 `(Region, report_date, revision)` 不得重复成功投递。邮件失败只报告或重试 Email Delivery；不得重新 Research、重新生成日报、重新 commit 或重新 push。
 
 ---
 
 ## Automation 登记
 
-| Name | Region | Schedule | Model / Reasoning | Mode | Creation Status |
+| Name | Region | Schedule | Model / Reasoning | Mode | Status |
 | --- | --- | --- | --- | --- | --- |
-| Eterna Global AI Intelligence | `Global` | 每日 `08:00 Asia/Shanghai` | `gpt-5.6-luna` / `high` | `UNATTENDED_OBSERVE` | `CREATED / ACTIVE` |
-| Eterna China AI Intelligence | `China` | 每日 `20:00 Asia/Shanghai` | `gpt-5.6-luna` / `high` | `UNATTENDED_OBSERVE` | `CREATED / ACTIVE` |
+| Eterna Global AI Intelligence | `Global` | 每日 `08:00 Asia/Shanghai` | `gpt-5.6-luna` / `high` | `UNATTENDED_WRITE` | `ACTIVE / WRITE GATED` |
+| Eterna China AI Intelligence | `China` | 每日 `20:00 Asia/Shanghai` | `gpt-5.6-luna` / `high` | `UNATTENDED_WRITE` | `ACTIVE / WRITE GATED` |
 
-- 两条任务均绑定本地 Eterna_Docs 项目，使用 Codex 本机 `Asia/Shanghai` 墙钟时间，不做 UTC 伪转换。
-- Global 只读取 Global Task 与 Global sources；China 只读取 China Task 与 China sources。
-- 两条任务均明确禁止 repository、Git 与 Gmail 副作用，并要求治理冲突、可靠 `event_date` 缺失或关键条件不足时 fail closed。
-- 当前产品 Automation 管理工具未提供 Run now / Test 调用入口；A10 未模拟测试运行。
+- Global 与 China 的来源、Event、日报、commit 和邮件完全独立。
+- 本文件只更新仓库治理合同，不实际运行、重建或修改 Automation 任务配置。
+- 当前收件人值只存在于任务受保护配置，不在仓库内登记。
 
 ---
 
-## Observe Run 输出合同
+## 失败与重试
+
+- Research / Verification / Analysis / Report Validation 失败：不得写文件、commit、push 或发送邮件。
+- 写入或 git diff gate 失败：不得 commit、push 或发送邮件。
+- commit 失败：不得 push 或发送邮件。
+- commit 成功但 push 失败：只核验并重试原 commit 的 push。
+- push 成功但 Gmail 失败：只重建同一日报 Revision 的 Email Summary Projection 并重试投递。
+- 已成功归档或投递的同一 Revision 不得重复 commit、push 或发送。
+
+---
+
+## 每次运行输出合同
 
 每次运行至少返回：
 
-- Region、Actual Started At、Report Date 与 Coverage Window；
-- Research：`PASS / PARTIAL / FAIL`；
-- Event Count 与 Source Coverage / Gaps；
-- Candidate Events：Event、deterministic Event Anchor、Status、Confidence、Importance 与 Evidence；
-- Eterna Value Extraction；
-- Would-be Report Path 与 Validation Result；
-- `Repository Mutation = NOT_ATTEMPTED`；
-- `Git = NOT_ATTEMPTED`；
-- `Gmail = NOT_ATTEMPTED`；
-- `AUTOMATION_MAIN_WRITE_GATE = NOT READY`。
-
-输出只供 review，不是正式日报归档、邮件投递、Eterna 决策或上位文档变更。
+- Region、Actual Started At、Report Date、Coverage Window 与 Revision；
+- Research / Verification / Analysis / Report Validation 结果；
+- Event Count、Source Coverage / Gaps 与 Eterna Value Extraction；
+- Report Path、Path Policy 与 Git Diff Gate；
+- Branch / Upstream、Commit SHA 与 Push 结果；
+- Gmail capability、Delivery Status 与幂等身份；
+- `AUTOMATION_AI_NEWS_WRITE_GATE = READY`；
+- `AUTOMATION_MAIN_WRITE_GATE = NOT READY`；
+- working tree 与 local / upstream / remote HEAD 对账。
 
 ---
 
-## 安全结论
+## 本节点执行边界
 
-- A10 只验证“自动回来研究”，不验证自动写仓库。
-- Automation 不获得 FROZEN、报告、状态、Git、Gmail 或 Secret 写权限。
-- 不创建 GitHub Actions、系统 cron、launchd、daemon 或其他替代 scheduler。
-- 不修改 macOS 电源设置，不开始 Stage 1.12 A11。
+A11 本次只修仓库治理与确定性门禁：
+
+- 不运行 Global / China Automation；
+- 不生成、写入、commit 或 push 真实日报；
+- 不发送真实日报邮件；
+- 不创建空目录、Workflow、cron、launchd、daemon、OpenAI API 或 `LLMProvider`；
+- 不修改 macOS 电源设置；
+- 不修改 Stage 1.1–1.11 `FROZEN` 历史正文；
+- 不修改 `main` 或 merge `AI_News` 到 `main`。

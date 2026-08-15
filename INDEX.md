@@ -1,12 +1,12 @@
-# Eterna 文档索引 v21
+# Eterna 文档索引 v22
 
-内部版本：`v21`
+内部版本：`v22`
 
 文档性质：Eterna 正式文档与知识库总索引
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 21:07`（Asia/Shanghai）
+文档更新时间：`2026-08-15 22:08`（Asia/Shanghai）
 
 > Eterna 正式文档与知识体系的唯一权威入口。
 > 当前已有四份上位文档完成核对并组成可引用的冻结输入集合；冻结内容 Commit 为 `392e76e45b7d733ff3ba3e0f2a633b653f3fbacf`。
@@ -63,13 +63,14 @@
 - [AI 情报自动化系统 Stage 1.10 Automation Scheduling and Git Spec](06_研究与探索/AI_情报/Stage1/Automation_Scheduling_and_Git_Spec_v0.1.md)（FROZEN，不构成 Workflow、Secret、代码或实际自动化实现）
 - [AI 情报自动化系统 Stage 1.11 Implementation Plan and Dependency Freeze](06_研究与探索/AI_情报/Stage1/Implementation_Plan_and_Dependency_Freeze_v0.1.md)（FROZEN，不构成代码、Workflow、Secret、依赖安装或实际自动化实现）
 - [AI 情报自动化系统 Stage 1.12 Personal MVP Route Amendment](06_研究与探索/AI_情报/Stage1/Stage_1.12_Personal_MVP_Route_Amendment_v0.1.md)（FROZEN，当前个人 MVP 执行路线修正；Stage 1.10 / 1.11 Future Production Route 保留）
+- [AI 情报自动化系统 Stage 1.12 Unattended Write and Delivery Amendment](06_研究与探索/AI_情报/Stage1/Stage_1.12_Unattended_Write_and_Delivery_Amendment_v0.1.md)（FROZEN，Current Personal MVP `AI_News` 写入、新日报路径与 Gmail 摘要投递门禁）
 - [AI 情报自动化系统 Stage 1.12 Source Registry Addendum](06_研究与探索/AI_情报/Stage1/Stage_1.12_Source_Registry_Addendum_v0.1.md)（FROZEN，Current Personal MVP GitHub 官方来源追加准入）
-- [Codex AI Intelligence 运行规范入口](06_研究与探索/AI_情报/automation/codex/README.md)（ACTIVE，Stage 1.12 A8 规范入口）
+- [Codex AI Intelligence 运行规范入口](06_研究与探索/AI_情报/automation/codex/README.md)（ACTIVE，Stage 1.12 A8–A11 规范入口）
 - [Codex AI Intelligence Shared Skill](06_研究与探索/AI_情报/automation/codex/AI_Intelligence_Skill.md)（ACTIVE，不构成已安装 Skill 或已创建 Automation）
 - [Global AI Intelligence Codex Task](06_研究与探索/AI_情报/automation/codex/Global_Task.md)（ACTIVE，Global 独立任务规范）
 - [China AI Intelligence Codex Task](06_研究与探索/AI_情报/automation/codex/China_Task.md)（ACTIVE，China 独立任务规范）
-- [Codex AI Intelligence Single-Run Execution Contract](06_研究与探索/AI_情报/automation/codex/Single_Run_Execution.md)（ACTIVE，Stage 1.12 A9 人工单次执行合同）
-- [Codex AI Intelligence Automation Safety Gate](06_研究与探索/AI_情报/automation/codex/Automation_Safety_Gate.md)（ACTIVE，Stage 1.12 A10 Observe-only 无人值守安全门禁）
+- [Codex AI Intelligence Single-Run Execution Contract](06_研究与探索/AI_情报/automation/codex/Single_Run_Execution.md)（ACTIVE，Stage 1.12 A9/A11 单次执行与无人值守副作用合同）
+- [Codex AI Intelligence Automation Safety Gate](06_研究与探索/AI_情报/automation/codex/Automation_Safety_Gate.md)（ACTIVE，Stage 1.12 A11 `UNATTENDED_WRITE` 安全门禁）
 
 ---
 

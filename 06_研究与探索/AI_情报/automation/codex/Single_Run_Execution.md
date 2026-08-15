@@ -1,15 +1,15 @@
-# Codex AI Intelligence · Single-Run Execution Contract · Stage 1.12 A9 · v0.2
+# Codex AI Intelligence · Single-Run Execution Contract · Stage 1.12 A9/A11 · v0.3
 
-内部版本：`v0.2`
+内部版本：`v0.3`
 
-文档性质：Codex Personal MVP 人工单次执行规范
+文档性质：Codex Personal MVP 单次执行与无人值守副作用规范
 
 状态：`ACTIVE`
 
-文档更新时间：`2026-08-15 16:50`（Asia/Shanghai）
+文档更新时间：`2026-08-15 22:08`（Asia/Shanghai）
 
-> 本文件定义一次由用户明确批准、人工触发的 Codex AI Intelligence 运行合同。
-> 本文件不创建 Automation、GitHub Actions 或常驻服务，不构成 Eterna 正式产品定义或无人值守写入授权。
+> 本文件定义一次人工触发或已批准 Automation 触发的 Codex AI Intelligence 运行合同。
+> 无人值守副作用只来自 A11 Amendment 的受限授权；本文件不创建新 Automation、GitHub Actions 或常驻服务。
 
 ---
 
@@ -18,14 +18,20 @@
 每次运行必须按以下顺序读取并核对：
 
 1. 用户明确批准的当前任务。
-2. [Personal MVP Route Amendment](../../Stage1/Stage_1.12_Personal_MVP_Route_Amendment_v0.1.md)。
-3. [Shared Skill](AI_Intelligence_Skill.md) 与对应 [Global Task](Global_Task.md) 或 [China Task](China_Task.md)。
-4. Stage 1.1–1.11 `FROZEN` 文档、Base Source Registry 与当前有效、明确批准的 Source Registry Addendum。
-5. 外部公开研究内容。
+2. [Unattended Write and Delivery Amendment](../../Stage1/Stage_1.12_Unattended_Write_and_Delivery_Amendment_v0.1.md)。
+3. [Personal MVP Route Amendment](../../Stage1/Stage_1.12_Personal_MVP_Route_Amendment_v0.1.md)。
+4. [Shared Skill](AI_Intelligence_Skill.md) 与对应 [Global Task](Global_Task.md) 或 [China Task](China_Task.md)。
+5. Stage 1.1–1.11 `FROZEN` 文档、Base Source Registry 与当前有效、明确批准的 Source Registry Addendum。
+6. 外部公开研究内容。
 
-Amendment 只 supersede 当前调度平台、当前 LLM runtime 与 Stage 1.12 后续实现顺序。其他 `FROZEN` 规则继续有效；出现未覆盖冲突时必须 fail closed。
+A11 Amendment 只 supersede Current Personal MVP 日报路径、Git 写入目标、A10 Observe-only 门禁与 Gmail capability；Personal MVP Route Amendment 只 supersede 当前调度平台、当前 LLM runtime 与 Stage 1.12 后续实现顺序。其他 `FROZEN` 规则继续有效；出现未覆盖冲突时必须 fail closed。
 
-`AUTOMATION_MAIN_WRITE_GATE = NOT READY` 继续有效。本合同只允许用户明确批准的人工单次运行，不能据此授权无人值守任务写入 `main`。
+```text
+AUTOMATION_MAIN_WRITE_GATE = NOT READY
+AUTOMATION_AI_NEWS_WRITE_GATE = READY
+```
+
+`main` 永远不是当前 Automation 写入目标。无人值守写入只允许 `AI_News` / `origin/AI_News`，且只允许当前 Region、当前日期的正式日报。
 
 ---
 
@@ -50,7 +56,7 @@ Amendment 只 supersede 当前调度平台、当前 LLM runtime 与 Stage 1.12 �
 开始 research 前必须确认：
 
 - repo 为 `JerryYork3516/Eterna_Docs`；
-- branch 为 `main`，upstream 指向批准的远端分支；
+- branch 严格为 `AI_News`，upstream 严格为 `origin/AI_News`；
 - HEAD 与当前任务前置状态一致；
 - working tree clean；
 - 不存在未授权人工修改。
@@ -73,7 +79,7 @@ Resolve Region / Date / Coverage Window / Revision
 → Validate Report
 → Review Git Diff
 → Commit
-→ Push main
+→ Push origin/AI_News
 → Build Email Summary Projection
 → Deliver Gmail only if an authorized capability exists
 ```
@@ -112,8 +118,8 @@ Codex 构建 structured Event 时必须：
 正式路径只允许：
 
 ```text
-Global: 06_研究与探索/AI_情报/reports/global/YYYY/MM/YYYY-MM-DD_Global_AI_Intelligence.md
-China:  06_研究与探索/AI_情报/reports/china/YYYY/MM/YYYY-MM-DD_China_AI_Intelligence.md
+Global: 06_研究与探索/每日AI资讯/YYYY-MM-DD_Global_AI_News.md
+China:  06_研究与探索/每日AI资讯/YYYY-MM-DD_China_AI_News.md
 ```
 
 报告必须完整继承 Stage 1.8 的头部、固定章节、Event 字段、来源覆盖、Eterna 价值提取、空日报与 Revision 规则。Global / China 不得混合；不得创建 `draft`、`final` 或随机后缀文件规避正式路径唯一性。
@@ -149,10 +155,16 @@ git diff --check
 一次报告 commit 只能包含当前 Region、当前 `report_date`、当前 `revision` 的正式日报。首次报告 commit message 为：
 
 ```text
-intel: add <Global|China> AI report YYYY-MM-DD
+intel: add <Global|China> AI news YYYY-MM-DD
 ```
 
-禁止 force push、改写历史、删除历史日报、夹带治理文件或无效空提交。
+Revision commit message 为：
+
+```text
+intel: revise <Global|China> AI news YYYY-MM-DD rN
+```
+
+push 目标固定为 `origin AI_News`。禁止 push / checkout / merge `main`、force push、改写历史、删除历史日报、创建其他分支、写 State、夹带治理文件或无效空提交。
 
 若 commit 成功而 push 失败，必须保留原 commit SHA，只核验并重试 push；不得重新 research、生成报告或创建第二个 commit。
 
@@ -163,10 +175,10 @@ intel: add <Global|China> AI report YYYY-MM-DD
 只有报告完成验证、commit 且 push 成功后，才可从该 Revision 生成 Stage 1.9 Email Summary Projection。
 
 - Subject：`[Eterna AI Intelligence] <Global|China> | YYYY-MM-DD`。
-- 正文只投影核心摘要、最重要事件、Eterna 今日主控判断及 report path / commit reference，不复制整份日报。
+- 正文只投影最重要 `3–5` 条、Eterna 价值提取、Eterna 今日主控判断、其他 News 简要摘要及 report path / commit reference，不复制整份日报。
 - 不得包含 Secret、Token、Cookie、本地绝对路径、内部 Prompt 或 Chain of Thought。
-- 只有当前环境已存在用户授权的 Gmail MCP、官方 Connector 或其他已批准合法能力时才可发送。
-- 能力不存在时记录 `Gmail Delivery = BLOCKED_BY_CAPABILITY`；不得创建密码、Cookie、Session、OAuth credential、Secret 或安装不明工具。
+- 当前 Gmail capability 已由用户连接并人工测试成功；Automation 只能在 push `origin/AI_News` 成功后使用该已授权能力。
+- 收件人由 Automation 任务受保护配置提供，不得把真实邮箱地址写入仓库。
 - 报告已 push 但邮件失败时，只允许重建同一日报的 Email Projection 并重试投递，不得重跑前序步骤。
 
 ---
@@ -183,18 +195,18 @@ intel: add <Global|China> AI report YYYY-MM-DD
 - Gmail Capability Missing；
 - Gmail Delivery Failure。
 
-最终输出至少包含输入参数、Coverage Window、研究与验证结果、报告路径与状态、Event 和来源覆盖摘要、Git diff / commit / push 结果、Gmail 能力与投递状态、HEAD 对账、working tree 状态、未完成风险，以及 `AUTOMATION_MAIN_WRITE_GATE = NOT READY`。
+最终输出至少包含输入参数、Coverage Window、研究与验证结果、报告路径与状态、Event 和来源覆盖摘要、Git diff / commit / push 结果、Gmail 能力与投递状态、HEAD 对账、working tree 状态、未完成风险，以及两个 Automation 写入门禁。
 
 ---
 
 ## 11. 明确不做
 
-本合同不授权创建或启动：
+本文件不创建或启动：
 
-- Codex Automation、定时任务、cron、launchd、后台 daemon；
+- 新的 Codex Automation、cron、launchd、后台 daemon；
 - GitHub Actions 或其他 Workflow；
 - OpenAI API、`LLMProvider`、Search Provider 或新 Secret；
 - Web 服务、数据库、Agent Framework、Scheduler 或大型 Python Pipeline；
-- A10 或任何后续节点。
+- 真实测试运行、真实日报或本次治理变更中的真实邮件。
 
 不得删除、大改或越界修改 A1–A7；发现阻塞性问题时必须停止并报告。

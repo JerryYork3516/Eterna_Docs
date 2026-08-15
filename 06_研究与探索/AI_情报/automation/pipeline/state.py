@@ -16,7 +16,11 @@ from urllib.parse import urlsplit
 
 from pipeline.errors import AutomationError
 from pipeline.models import EvidenceRelation, InformationStatus, Region, StatusHistoryEntry
-from pipeline.path_policy import PathPolicyError, validate_write_path
+from pipeline.path_policy import (
+    PathPolicyError,
+    validate_legacy_state_path,
+    validate_write_path,
+)
 
 
 SUPPORTED_STATE_SCHEMA_VERSION = 1
@@ -470,11 +474,9 @@ def delivery_idempotency_key(region: Region, report_date_value: date, revision: 
 def report_path(region: Region, report_date_value: date) -> str:
     _enum(region, Region, "region")
     _date(report_date_value, "report_date")
-    region_dir = region.value.lower()
     return (
-        f"06_研究与探索/AI_情报/reports/{region_dir}/"
-        f"{report_date_value.year:04d}/{report_date_value.month:02d}/"
-        f"{report_date_value.isoformat()}_{region.value}_AI_Intelligence.md"
+        "06_研究与探索/每日AI资讯/"
+        f"{report_date_value.isoformat()}_{region.value}_AI_News.md"
     )
 
 
@@ -1156,7 +1158,7 @@ def _state_target(
     if repo_relative_path != STATE_PATHS[region]:
         raise StateValidationError("State path is not the official Region state path")
     try:
-        validated = validate_write_path(
+        validated = validate_legacy_state_path(
             region.value,
             repo_relative_path,
             repo_root=repo_root,

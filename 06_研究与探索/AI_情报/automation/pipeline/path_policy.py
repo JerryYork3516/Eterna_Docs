@@ -12,22 +12,22 @@ from pipeline.errors import AutomationError
 
 _SUPPORTED_REGIONS = frozenset({"Global", "China"})
 _DEFAULT_REPO_ROOT = Path(__file__).resolve().parents[4]
+_APPROVED_AUTOMATION_BRANCH = "AI_News"
+_APPROVED_AUTOMATION_UPSTREAM = "origin/AI_News"
 _STATE_PATHS = {
     "Global": "06_研究与探索/AI_情报/automation/state/global.json",
     "China": "06_研究与探索/AI_情报/automation/state/china.json",
 }
 _REPORT_PATTERNS = {
     "Global": re.compile(
-        r"^06_研究与探索/AI_情报/reports/global/"
-        r"(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/"
+        r"^06_研究与探索/每日AI资讯/"
         r"(?P<report_date>[0-9]{4}-[0-9]{2}-[0-9]{2})"
-        r"_Global_AI_Intelligence\.md$"
+        r"_Global_AI_News\.md$"
     ),
     "China": re.compile(
-        r"^06_研究与探索/AI_情报/reports/china/"
-        r"(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/"
+        r"^06_研究与探索/每日AI资讯/"
         r"(?P<report_date>[0-9]{4}-[0-9]{2}-[0-9]{2})"
-        r"_China_AI_Intelligence\.md$"
+        r"_China_AI_News\.md$"
     ),
 }
 
@@ -74,10 +74,15 @@ def _validate_report_path(region: str, path_text: str) -> None:
     except ValueError as exc:
         raise PathPolicyError("Report path contains an invalid calendar date") from exc
 
-    if match.group("year") != f"{report_date.year:04d}":
-        raise PathPolicyError("Report year directory does not match report_date")
-    if match.group("month") != f"{report_date.month:02d}":
-        raise PathPolicyError("Report month directory does not match report_date")
+
+def validate_automation_git_target(branch: str, upstream: str) -> tuple[str, str]:
+    """Validate the only approved Current Personal MVP Git write target."""
+
+    if branch != _APPROVED_AUTOMATION_BRANCH:
+        raise PathPolicyError("Automation branch must be exactly AI_News")
+    if upstream != _APPROVED_AUTOMATION_UPSTREAM:
+        raise PathPolicyError("Automation upstream must be exactly origin/AI_News")
+    return branch, upstream
 
 
 def validate_write_path(
@@ -95,10 +100,25 @@ def validate_write_path(
     _reject_symlink_escape(path, repo_root or _DEFAULT_REPO_ROOT)
     path_text = path.as_posix()
 
-    if path_text == _STATE_PATHS[region]:
-        return path
-
     _validate_report_path(region, path_text)
+    return path
+
+
+def validate_legacy_state_path(
+    region: str,
+    repo_relative_path: str,
+    *,
+    repo_root: Path | None = None,
+) -> PurePosixPath:
+    """Preserve the A4 state contract without authorizing unattended state writes."""
+
+    if not isinstance(region, str) or region not in _SUPPORTED_REGIONS:
+        raise PathPolicyError(f"Unsupported Region: {region!r}")
+
+    path = _validate_repo_relative_path(repo_relative_path)
+    _reject_symlink_escape(path, repo_root or _DEFAULT_REPO_ROOT)
+    if path.as_posix() != _STATE_PATHS[region]:
+        raise PathPolicyError("Path is not the official legacy Region state path")
     return path
 
 
@@ -108,8 +128,11 @@ def validate_write_paths(
     *,
     repo_root: Path | None = None,
 ) -> tuple[PurePosixPath, ...]:
-    """Validate multiple targets under the same Region-specific policy."""
+    """Validate the single report target allowed in one unattended write."""
 
-    return tuple(
+    validated = tuple(
         validate_write_path(region, path, repo_root=repo_root) for path in paths
     )
+    if len(validated) != 1:
+        raise PathPolicyError("One unattended write must contain exactly one report")
+    return validated
